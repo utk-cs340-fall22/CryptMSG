@@ -1,0 +1,8 @@
+.main-body {
+    width: 75vw;
+    position: absolute;
+    height: 100vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
