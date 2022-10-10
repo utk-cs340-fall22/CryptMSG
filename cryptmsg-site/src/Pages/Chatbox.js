@@ -1,6 +1,5 @@
 import React, { createElement } from 'react'
 import './Chatbox.css'
-import Message from './Message';
 
 function sendText() {
     var text = document.getElementById("input-box").value;
@@ -14,7 +13,7 @@ function Chatbox() {
         <div className='chatbox'>
             <div>
                 <div id="input-box" contentEditable />
-                <button id="input-submit" onClick={sendText()}>&#9650;</button>
+                <button id="input-submit">&#9650;</button>
             </div>
         </div>
     )
