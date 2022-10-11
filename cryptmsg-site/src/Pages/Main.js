@@ -4,7 +4,7 @@ import Message from './Message'
 
 function Main() {
   return (
-    <div className='main-body'>
+    <div id='main-body'>
         <Message />
     </div>
   )
