@@ -3,8 +3,11 @@ import threading
 
 class Server: 
 	def __init__(self): 
+		self.ip = '127.0.0.1'
+		self.port = 12345
+
 		self.node = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		ip_and_port = ('127.0.0.1', 12345)
+		ip_and_port = (self.ip, self.port)
 		self.node.bind(ip_and_port)
 		self.node.listen(5)
 		self.connection, addr = self.node.accept()
