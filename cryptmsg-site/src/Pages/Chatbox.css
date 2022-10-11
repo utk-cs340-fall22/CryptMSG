@@ -15,6 +15,30 @@
     align-items: center;
 }
 
+#message-board {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+ 
+.messages {
+    align-self: flex-start;
+    margin: 10px 0px 0px 0px;
+    padding: 5px 7px;
+    border-radius: 10px;
+    background-color: steelblue;
+}
+ 
+.messages #sent {
+    align-self: flex-start;
+    background-color: steelblue;
+}
+ 
+.messages #received {
+    align-self: flex-end;
+    background-color: rgb(44, 163, 199);
+}
+
 #input-box {
     min-height: 30px;
     max-height: 400px;
