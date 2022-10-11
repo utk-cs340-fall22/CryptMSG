@@ -4,7 +4,9 @@ Dylan Lewis (dylanbl)
 CryptMSG
 
 ### Plans
-- Implement a basic messaging service (
+- Create tokens that allow messages to be sent (Issue #18 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/18))
+- Implement encryption and decryption of messages in messaging client (Issue #17 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/17))
+- Implement a basic messaging service (Issue #2 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/2))
 
 ### What you did not do
 (Give a short bulleted list of the items that you planned to do, but did not accomplish)
