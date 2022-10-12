@@ -2,9 +2,17 @@ import socket
 import threading
 
 class Client:
+    #def __init__(self):
+    #	self.node = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #	port_and_ip = (self.ip, self.port)
+    #	self.node.connect(port_and_ip)
+
     def __init__(self):
+        self.ip = '127.0.0.1'
+        self.port = 12345
+
         self.node = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        port_and_ip = ('127.0.0.1', 12345)
+        port_and_ip = (self.ip, self.port)
         self.node.connect(port_and_ip)
 
     def SendSMS(self, SMS):
