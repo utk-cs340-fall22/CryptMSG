@@ -1,5 +1,10 @@
 5742b970 (Kijan Daniel  2022-10-11 21:57:31 -0400 1) #  CryptMSG
 
+469b2107 (Kijan Daniel  2022-10-11 22:53:20 -0400  34)          block = {'Index': len(self.chain) + 1,
+469b2107 (Kijan Daniel  2022-10-11 22:53:20 -0400  35)                          'Timestamp': str(datetime.datetime.now()),
+469b2107 (Kijan Daniel  2022-10-11 22:53:20 -0400  36)                          'Proof': proof,
+469b2107 (Kijan Daniel  2022-10-11 22:53:20 -0400  37)                          'Previous_hash': previous_hash}
+
 1b743f4c (Kijan Daniel 2022-10-11 22:15:34 -0400  1) # Sprint 1
 1b743f4c (Kijan Daniel 2022-10-11 22:15:34 -0400  2)
 1b743f4c (Kijan Daniel 2022-10-11 22:15:34 -0400  3) Kijan Daniel, KijanDaniel, CryptMSG (include your name, github id, and group name here)
