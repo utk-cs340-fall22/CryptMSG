@@ -5,6 +5,31 @@
 469b2107 (Kijan Daniel  2022-10-11 22:53:20 -0400  36)                          'Proof': proof,
 469b2107 (Kijan Daniel  2022-10-11 22:53:20 -0400  37)                          'Previous_hash': previous_hash}
 
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  19)
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  20)
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  21) class Blockchain:
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  22)
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  23)     # This function is created
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  24)     # to create the very first
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  25)     # block and set its hash to "0"
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  26)     def __init__(self):
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  27)         self.chain = []
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  28)         self.create_block(proof=1, previous_hash='0')
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  29)
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  30)     # This function is created
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  31)     # to add further blocks
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  32)     # into the chain
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  33)     def create_block(self, proof, previous_hash):
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  34)         block = {'index': len(self.chain) + 1,
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  35)                  'timestamp': str(datetime.datetime.now()),
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  36)                  'proof': proof,
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  37)                  'previous_hash': previous_hash}
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  38)         self.chain.append(block)
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  39)         return block
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  40)
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  41)     # This function is created
+6882aadb (Kijan Daniel  2022-10-11 22:57:15 -0400  42)     # to display the previous block
+
 1b743f4c (Kijan Daniel 2022-10-11 22:15:34 -0400  1) # Sprint 1
 1b743f4c (Kijan Daniel 2022-10-11 22:15:34 -0400  2)
 1b743f4c (Kijan Daniel 2022-10-11 22:15:34 -0400  3) Kijan Daniel, KijanDaniel, CryptMSG (include your name, github id, and group name here)
