@@ -12,7 +12,7 @@ CryptMSG
 - Issue #13 made a basis for differentiating the messages but they need to be further formatted.
 
 ### Problems encountered
-- I'm not that experienced with react, and it took some time to understand how to work with certian components.
+- I'm not that experienced with react, and it took some time to understand how to work with certain components.
 
 ### Files worked on
 - cryptmsg-site/src/Pages/Chatbox.js
