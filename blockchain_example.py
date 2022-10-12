@@ -18,7 +18,7 @@ import JSON
 from flask import Flask, jsonify
 
 
-class Blockchain:
+class blockchain:
 
 	# This function is created
 	# to create the very first
@@ -31,10 +31,10 @@ class Blockchain:
 	# to add further blocks
 	# into the chain
 	def create_block(self, proof, previous_hash):
-		block = {'index': len(self.chain) + 1,
-				'timestamp': str(datetime.datetime.now()),
-				'proof': proof,
-				'previous_hash': previous_hash}
+		block = {'Index': len(self.chain) + 1,
+				'Timestamp': str(datetime.datetime.now()),
+				'Proof': proof,
+				'Previous_hash': previous_hash}
 		self.chain.append(block)
 		return block
 	
@@ -69,11 +69,11 @@ class Blockchain:
 		
 		while block_index < len(chain):
 			block = chain[block_index]
-			if block['previous_hash'] != self.hash(previous_block):
+			if block['Previous_hash'] != self.hash(previous_block):
 				return False
 			
-			previous_proof = previous_block['proof']
-			proof = block['proof']
+			previous_proof = previous_block['Proof']
+			proof = block['Proof']
 			hash_operation = hashlib.sha256(
 				str(proof**2 - previous_proof**2).encode()).hexdigest()
 			
