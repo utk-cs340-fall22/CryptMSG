@@ -1,5 +1,6 @@
 :root {
     --main-background: #2C3639;
+    --main-background2: #312A24;    
 }
 
 * {
@@ -11,5 +12,5 @@
 }
 
 body {
-    background-color: var(--main-background);
+    background-color: var(--main-background2);
 }

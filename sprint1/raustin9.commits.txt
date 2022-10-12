@@ -1,0 +1,19 @@
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  5) function App() {
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 12) }
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 13) 
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 14) export default App;
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  5) function App() {
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 12) }
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 13) 
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 14) export default App;
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  1) import React from 'react';
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  2) import ReactDOM from 'react-dom/client';
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  3) import App from './App';
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  4) 
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  5) const root = ReactDOM.createRoot(document.getElementById('root'));
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  6) root.render(
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  7)   <React.StrictMode>
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  8)     <App />
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  9)   </React.StrictMode>
+79f26a91 (Reagan Austin 2022-09-27 08:44:24 -0400 2) 
+a599876c (Reagan Austin 2022-09-27 08:59:30 -0400 3) [Figma Design Document](https://www.figma.com/file/IBEUuUtQhDCHAvtjbuNzIP/Crypt-MSG?node-id=0%3A1)
