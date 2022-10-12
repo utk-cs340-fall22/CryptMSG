@@ -4,9 +4,9 @@ Riley Crockett (rcrocke6)
 CryptMSG
 
 ### Original Plans
-- Add keypress functionality for sending messages (Issue #14 (https://github.com/utk-cs340-fall22/CryptMSG/issues/14))
-- Add formatting for received and sent messages (Issue #13 (https://github.com/utk-cs340-fall22/CryptMSG/issues/13))
-- Dynamically add messages to the frontend (Issue #11 (https://github.com/utk-cs340-fall22/CryptMSG/issues/11))
+- Add keypress functionality for sending messages (Issue (https://github.com/utk-cs340-fall22/CryptMSG/issues/14))
+- Add formatting for received and sent messages (Issue (https://github.com/utk-cs340-fall22/CryptMSG/issues/13))
+- Dynamically add messages to the frontend (Issue (https://github.com/utk-cs340-fall22/CryptMSG/issues/11))
 
 ### Partially finished
 - Issue #13 made a basis for differentiating the messages but they need to be further formatted.
