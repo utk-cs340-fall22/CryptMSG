@@ -1,16 +1,18 @@
 :root {
-    --main-background: #2C3639;
-    --main-background2: #312A24;    
+    /* --main-background: #2C3639; */
+    --main-background: #312A24;
+    --text-color: #DCD7C9;
+    --accent-color: #A27B5C;
 }
 
 * {
     margin: 0;
     padding: 0;
     background-color: inherit;
-    color: #DCD7C9;
+    color: var(--text-color);
     /* outline: solid red 1px; */
 }
 
 body {
-    background-color: var(--main-background2);
+    background-color: var(--main-background);
 }
