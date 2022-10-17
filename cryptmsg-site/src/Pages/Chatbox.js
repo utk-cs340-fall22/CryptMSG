@@ -3,10 +3,10 @@ import './Chatbox.css'
 
 const scrollToBottom = () =>{ 
     window.scrollTo({ 
-      top: document.documentElement.scrollHeight, 
-      behavior: 'smooth'
+        top: document.documentElement.scrollHeight, 
+        behavior: 'smooth'
     }); 
-  }; 
+}; 
 
 function SendText() {
     var text = document.getElementById("input-box").innerHTML;
@@ -30,7 +30,7 @@ var EnterInput = function(event) {
     }
 }
 
-function Chatbox() { 
+function Chatbox() {     
     return (
         <div className='chatbox'>
             <div>

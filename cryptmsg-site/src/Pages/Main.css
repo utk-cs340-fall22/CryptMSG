@@ -8,3 +8,19 @@
     margin-left: 6vw;
     font-size: 2vw;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: darkgrey; 
+    border-radius: 10px;
+}
