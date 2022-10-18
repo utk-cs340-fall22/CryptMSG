@@ -37,6 +37,8 @@
     background-color: steelblue;
     max-width: 30vw;
     word-wrap: break-word;
+    font-family: var(--msg-font);
+    font-size: 1.6rem;
 }
  
 #sent {
@@ -59,22 +61,44 @@
     margin-left: 4vw;
     margin-right: 0;
     border: 2px solid var(--accent-color);
-    border-radius: 50px;
+    border-radius: 30px;
     padding: 20px 15px 15px 20px;
     font-size: 20px;
     background-color: var(--main-background);
+    font-family: var(--msg-font);
+}
+
+.input-submit-icon {
+    font-size: 1.5rem;
+    transition: 200ms ease;
+    background: none;
 }
 
 #input-submit {
     width: 4vw;
     height: 4vw;
-    background-color: var(--accent-color);
+    /* background-color: var(--accent-color); */
+    background-color: #C07715;
     border: none;
     border-radius: 100%;
     margin-left: 5px;
     font-size: 20px;
+    transition: 200ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #input-submit:hover {
-    background-color: red;
+    background-color: #E78B10;
+    transition: 200ms ease;
+}
+
+#input-submit:hover > .input-submit-icon {
+    font-size: 1.8rem;
+    transition: 200ms ease;
+}
+
+#input-box:focus {
+    outline: 0;
 }

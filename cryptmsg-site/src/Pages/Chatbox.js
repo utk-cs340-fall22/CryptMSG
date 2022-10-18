@@ -1,5 +1,7 @@
 import React from 'react'
 import './Chatbox.css'
+import * as FaIcons from 'react-icons/fa'
+import { IconContext } from 'react-icons/lib'
 
 const scrollToBottom = () =>{ 
     window.scrollTo({ 
@@ -35,7 +37,13 @@ function Chatbox() {
         <div className='chatbox'>
             <div>
                 <div id="input-box" onKeyDown={EnterInput} contentEditable />
-                <button id="input-submit" onClick={SendText}>&#9650;</button>
+                {/* <button id="input-submit" onClick={SendText}>&#9650;</button> */}
+                <IconContext.Provider value={{ className: 'input-submit-icon' }}>
+                    <button id="input-submit" onClick={SendText}>
+                        {/* &#9650; */}
+                        <FaIcons.FaPaperPlane />
+                    </button>
+                </IconContext.Provider>
             </div>
         </div>
     )
