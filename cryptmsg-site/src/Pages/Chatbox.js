@@ -12,17 +12,22 @@ const scrollToBottom = () =>{
 
 function SendText() {
     var text = document.getElementById("input-box").innerHTML;
+    var height = document.getElementById("message-board").clientHeight;
 
     if (text.length > 0) {
         var msg = document.createElement("div");
         msg.className = "messages";
         msg.id = "sent"
         msg.innerHTML = text;
-        document.getElementById("message-board").appendChild(msg);
+        document.getElementById("message-board").prepend(msg);
     }
 
     document.getElementById("input-box").innerHTML = "";
     scrollToBottom();
+
+    var margin = 750 - height;
+    if (margin < 0) margin = 0;
+    document.getElementById("message-board").style.marginTop = margin + "px";
 }
 
 var EnterInput = function(event) {

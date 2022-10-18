@@ -24,9 +24,11 @@
 #message-board {
     display: flex;
     flex-flow: column nowrap;
+    flex-direction: column-reverse;
     align-items: flex-start;
     padding-bottom: 150px;
     width: 85%;
+    /* margin-top: 58%; */
 }
  
 .messages {
@@ -72,17 +74,18 @@
     font-size: 1.5rem;
     transition: 200ms ease;
     background: none;
+    margin-left: -5px;
 }
 
 #input-submit {
-    width: 4vw;
-    height: 4vw;
+    width: 60px;
+    height: 60px;
     /* background-color: var(--accent-color); */
     background-color: #C07715;
     border: none;
     border-radius: 100%;
     margin-left: 5px;
-    font-size: 20px;
+    /* font-size: 20px; */
     transition: 200ms ease;
     display: flex;
     align-items: center;
