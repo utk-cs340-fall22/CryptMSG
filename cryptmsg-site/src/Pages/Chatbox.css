@@ -37,7 +37,7 @@
     margin: 10px 0px 0px 0px;
     padding: 5px 7px;
     border-radius: 10px;
-    background-color: steelblue;
+    /* background-color: steelblue; */
     max-width: 30vw;
     word-wrap: break-word;
     font-family: var(--msg-font);
@@ -46,17 +46,19 @@
  
 #sent {
     align-self: flex-end;
-    background-color: steelblue;
+    background-color: var(--accent-color);
 }
  
 #received {
     align-self: flex-start;
-    background-color: rgb(44, 163, 199);
+    background-color: var(--receive-color);
+    color: #f6f6f6
 }
 
 #input-box {
-    /* min-height: 30px;
-    max-height: 250px; */
+    /* min-height: 30px; */
+    /* max-height: 250px; */
+    height: 30px;
     overflow-x: hidden;
     overflow-y: auto;
     
@@ -69,6 +71,7 @@
     font-size: 20px;
     background-color: var(--main-background);
     font-family: var(--msg-font);
+    color: #f6f6f6;
     resize: none;
 }
 
@@ -82,8 +85,8 @@
 #input-submit {
     width: 60px;
     height: 60px;
-    /* background-color: var(--accent-color); */
-    background-color: #C07715;
+    background-color: var(--accent-color);
+    /* background-color: #C07715; */
     border: none;
     border-radius: 100%;
     margin-left: 5px;
@@ -95,13 +98,16 @@
 }
 
 #input-submit:hover {
-    background-color: #E78B10;
+    /* background-color: #E78B10; */
+    background-color: transparent;
     transition: 200ms ease;
+    border: 2px solid var(--accent-color);
 }
 
 #input-submit:hover > .input-submit-icon {
     font-size: 1.8rem;
     transition: 200ms ease;
+    fill: var(--accent-color);
 }
 
 #input-box:focus {

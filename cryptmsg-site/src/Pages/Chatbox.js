@@ -27,12 +27,36 @@ function SendText() {
     }
 
     document.getElementById("input-box").innerHTML = "";
+    document.getElementById("input-box").style.height = "30px";
     scrollToBottom();
 
     var margin = 750 - height;
     if (margin < 0) margin = 0;
     document.getElementById("message-board").style.marginTop = margin + "px";
 }
+
+
+function RecieveText(text) {
+    var height = document.getElementById("message-board").clientHeight;
+
+    if (text.length > 0) {
+        var msg = document.createElement("div");
+        msg.className = "messages";
+        msg.id = "received"
+        msg.innerHTML = text;
+        document.getElementById("message-board").prepend(msg);
+        document.getElementById("input-box").value = "";
+    }
+
+    document.getElementById("input-box").innerHTML = "";
+    scrollToBottom();
+
+    var margin = 750 - height;
+    if (margin < 0) margin = 0;
+    document.getElementById("message-board").style.marginTop = margin + "px";
+}
+
+window.RecieveText = RecieveText;
 
 var EnterInput = function(event) {
     if (event.keyCode === 13) {
