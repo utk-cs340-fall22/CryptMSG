@@ -1,0 +1,1 @@
+Running: "/usr/local/bin/protoc" "--include_imports" "--include_source_info" "-o" "/var/folders/0h/yhm417r10wgdpw43qg9cr18w0000gn/T/prost-buildvAUGnW/prost-descriptor-set" "-I" "src" "src/keys.proto" "src/envelope.proto" "src/peer_record.proto"

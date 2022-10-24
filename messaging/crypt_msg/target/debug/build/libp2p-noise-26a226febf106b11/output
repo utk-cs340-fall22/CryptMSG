@@ -1,0 +1,1 @@
+Running: "/usr/local/bin/protoc" "--include_imports" "--include_source_info" "-o" "/var/folders/0h/yhm417r10wgdpw43qg9cr18w0000gn/T/prost-build3w3jDJ/prost-descriptor-set" "-I" "src" "src/io/handshake/payload.proto"
