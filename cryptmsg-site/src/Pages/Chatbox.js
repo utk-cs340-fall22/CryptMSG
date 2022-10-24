@@ -13,50 +13,46 @@ const scrollToBottom = () =>{
     }); 
 }; 
 
+function ResizeMsgBoard(msg_board) {
+    var chatbox_height = document.querySelector(".chatbox").clientHeight;
+    var margin = window.innerHeight - chatbox_height - msg_board.clientHeight;
+
+    if (margin <= 0) {
+        margin = 0;
+        msg_board.style.paddingBottom = chatbox_height + "px";
+    }
+    msg_board.style.marginTop = margin + "px";
+}
+
+function AddMessage(msg_board, type, value) {
+    var msg = document.createElement("div");
+    msg.className = "messages";
+    msg.id = type;
+    msg.innerHTML = value;
+    msg_board.prepend(msg);
+}
+
 function SendText() {
-    var text = document.getElementById("input-box").value;
-    var height = document.getElementById("message-board").clientHeight;
-
-    if (text.length > 0) {
-        var msg = document.createElement("div");
-        msg.className = "messages";
-        msg.id = "sent"
-        msg.innerHTML = text;
-        document.getElementById("message-board").prepend(msg);
-        document.getElementById("input-box").value = "";
-    }
-
-    document.getElementById("input-box").innerHTML = "";
-    document.getElementById("input-box").style.height = "30px";
+    var input_box = document.getElementById("input-box");
+    var msg_board = document.getElementById("message-board");
+    if (input_box.value.length === 0) { return; }
+ 
+    AddMessage(msg_board, "sent", input_box.value);
+    input_box.value = "";
+    input_box.innerHTML = "";
+    input_box.style.height = "30px";
+    ResizeMsgBoard(msg_board);
     scrollToBottom();
-
-    var margin = 750 - height;
-    if (margin < 0) margin = 0;
-    document.getElementById("message-board").style.marginTop = margin + "px";
 }
 
-
-function RecieveText(text) {
-    var height = document.getElementById("message-board").clientHeight;
-
-    if (text.length > 0) {
-        var msg = document.createElement("div");
-        msg.className = "messages";
-        msg.id = "received"
-        msg.innerHTML = text;
-        document.getElementById("message-board").prepend(msg);
-        document.getElementById("input-box").value = "";
-    }
-
-    document.getElementById("input-box").innerHTML = "";
+function ReceiveText(text) {
+    var msg_board = document.getElementById("message-board");
+    AddMessage(msg_board, "received", text.value);
+    ResizeMsgBoard(msg_board);
     scrollToBottom();
-
-    var margin = 750 - height;
-    if (margin < 0) margin = 0;
-    document.getElementById("message-board").style.marginTop = margin + "px";
 }
 
-window.RecieveText = RecieveText;
+window.ReceiveText = ReceiveText;
 
 var EnterInput = function(event) {
     if (event.keyCode === 13) {
@@ -64,8 +60,6 @@ var EnterInput = function(event) {
         SendText();
     }
 }
-
-
 
 class Chatbox extends Component {   
     componentDidMount(){

@@ -27,7 +27,7 @@
     flex-flow: column nowrap;
     flex-direction: column-reverse;
     align-items: flex-start;
-    padding-bottom: 150px;
+    /* padding-bottom: 150px; */
     width: 85%;
     /* margin-top: 58%; */
 }
