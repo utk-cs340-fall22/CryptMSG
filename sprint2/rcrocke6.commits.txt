@@ -1,0 +1,172 @@
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 16) function ResizeMsgBoard(msg_board) {
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 17)     var chatbox_height = document.querySelector(".chatbox").clientHeight;
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 18)     var margin = window.innerHeight - chatbox_height - msg_board.clientHeight;
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 20)     if (margin <= 0) {
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 21)         margin = 0;
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 22)         msg_board.style.paddingBottom = chatbox_height + "px";
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 23)     }
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 24)     msg_board.style.marginTop = margin + "px";
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 25) }
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 27) function AddMessage(msg_board, type, value) {      
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 28)     var msg = document.createElement("div");       
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 29)     msg.className = "messages";
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 30)     msg.id = type;
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 31)     msg.innerHTML = value;
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 32)     msg_board.prepend(msg);
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 33) }
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 35) function SendText() {
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 36)     var input_box = document.getElementById("input-box");
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 37)     var msg_board = document.getElementById("message-board");
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 38)     if (input_box.value.length === 0) { return; }  
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 39)
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 40)     AddMessage(msg_board, "sent", input_box.value);73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 41)     input_box.value = "";
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 42)     input_box.innerHTML = "";
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 43)     input_box.style.height = "30px";
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 44)     ResizeMsgBoard(msg_board);
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 46) }
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 48) function ReceiveText(text) {
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 49)     var msg_board = document.getElementById("message-board");
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 50)     AddMessage(msg_board, "received", text.value); 
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 51)     ResizeMsgBoard(msg_board);
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 52)     scrollToBottom();
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 52) }
+73e2778f (Riley Crockett 2022-10-23 20:34:31 -0400 55) window.ReceiveText = ReceiveText;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 11)                  <ChatSettings />
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 12)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 13)     --chat-settings-color: #c2c2c2;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  1) .chat-settings div {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  2)     position: fixed;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  3)     height: auto;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  4)     padding-top: 1vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  5)     z-index: 2;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  6) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  7)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  8) .right-side {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  9)     padding-right: 1vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 10)     right: 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 11) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 12)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 13) .left-side {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 14)     padding-left: 1vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 15)     left: 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 16) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 17)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 18) .settings-buttons {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 19)     width: 50px;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 20)     height: 50px;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 21)     border: none;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 22)     border-radius: 100%;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 23)     display: flex;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 24)     align-items: center;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 25)     justify-content: center;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 26)     transition: 200ms ease;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 27) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 28)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 29) .settings-buttons:hover .settings-icon{
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 30)     font-size: 2.1rem;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 31)     transition: 200ms ease;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 32)     fill: var(--accent-color);
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 33) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 34)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 35) .settings-icon {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 36)     font-size: 1.8rem;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 37)     transition: 200ms ease;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 38)     background: none;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 39)     border: none;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 40)     margin-left: 5px;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 41)     fill: var(--chat-settings-color);
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 42) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 43)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 44) .sidebar {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 45)     position: absolute;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 46)     width: 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 47)     border-width: 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 48)     border-style: solid;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 49)     border-color: var(--accent-color);
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 50)     top: 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 51)     align-items: flex-start;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 52)     transition: 200ms ease;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 53) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 54)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 55) #chat-settings-closebtn {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 56)     display: none;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 57)     margin-left: auto;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 58)     margin-right: 1vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 59) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 60)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 61) #contacts-closebtn {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 62)     display: none;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 63)     margin-right: auto;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 64)     margin-left: 1vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 65) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 66)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 67) #chat-settings-sidebar {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 68)     height: 88vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 69)     border-radius: 0 0 0 5vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 70)     right: 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 71) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 72)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 73) #contacts-sidebar {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 74)     height: 88vh;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 75)     border-radius: 0 0 5vh 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 76)     left: 0;
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 77) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  1) import React from 'react'
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  2) import { Component } from 'react'
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  3) import './ChatSettings.css'
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  4) import * as FaIcons from 'react-icons/fa'
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  5) import { IconContext } from 'react-icons/lib'      
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  6)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  7) function OpenSidebar(name) {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  8)     var sidebar = document.getElementById(`${name}-sidebar`);
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400  9)     document.getElementById(`${name}-openbtn`).style.display = "none";
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 10)     document.getElementById(`${name}-closebtn`).style.display = "block";
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 11)     sidebar.style.width = "17vw";
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 12)     sidebar.style.borderWidth = "0 0 2px 2px";     
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 13)     if (name == "contacts") {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 14)         sidebar.style.borderWidth = "0 2px 2px 0"; 
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 15)     }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 16) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 17)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 18) function CloseSidebar(name) {
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 19)     var sidebar = document.getElementById(`${name}-sidebar`);
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 20)     sidebar.style.width = "0";
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 21)     sidebar.style.borderWidth = "0";
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 22)     document.getElementById(`${name}-openbtn`).style.display = "block";
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 23)     document.getElementById(`${name}-closebtn`).style.display = "none";
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 24) }
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 25)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 26) class Settings extends Component { render() { return (
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 27)     <div className='chat-settings'>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 28)         <div className='left-side'>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 29)             <IconContext.Provider value={{ className: 'settings-icon' }}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 30)                 <button className="settings-buttons" id="contacts-openbtn" onClick={() => OpenSidebar("contacts")}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 31)                     <FaIcons.FaUsers />
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 32)                 </button>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 33)             </IconContext.Provider>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 34)             <div className='sidebar' id="contacts-sidebar" >
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 35)                 <IconContext.Provider value={{ className: 'settings-icon' }}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 36)                     <button className="settings-buttons" id="contacts-closebtn" onClick={() => CloseSidebar("contacts")}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 37)                         <FaIcons.FaRegTimesCircle />
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 38)                     </button>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 39)                 </IconContext.Provider>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 40)             </div>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 41)         </div>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 42)         <div className='right-side'>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 43)             <IconContext.Provider value={{ className: 'settings-icon' }}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 44)                 <button className="settings-buttons" id="chat-settings-openbtn" onClick={() => OpenSidebar("chat-settings")}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 45)                     <FaIcons.FaCog />
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 46)                 </button>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 47)             </IconContext.Provider>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 48)             <div className='sidebar' id="chat-settings-sidebar">
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 49)                 <IconContext.Provider value={{ className: 'settings-icon' }}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 50)                     <button className="settings-buttons" id="chat-settings-closebtn" onClick={() => CloseSidebar("chat-settings")}>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 51)                         <FaIcons.FaRegTimesCircle />
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 52)                     </button>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 53)                 </IconContext.Provider>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 54)             </div>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 55)         </div>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 56)     </div>
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 57) );}}
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 58)
+04464141 (Riley Crockett 2022-10-25 02:45:23 -0400 59) export default Settings
