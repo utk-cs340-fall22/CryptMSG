@@ -1,0 +1,77 @@
+.chat-settings div {
+    position: fixed;
+    height: auto;
+    padding-top: 1vh;
+    z-index: 2;
+}
+
+.right-side {
+    padding-right: 1vh;
+    right: 0;
+}
+
+.left-side {
+    padding-left: 1vh;
+    left: 0;
+}
+
+.settings-buttons {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 200ms ease;
+}
+
+.settings-buttons:hover .settings-icon{
+    font-size: 2.1rem;
+    transition: 200ms ease;
+    fill: var(--accent-color);
+}
+
+.settings-icon {
+    font-size: 1.8rem;
+    transition: 200ms ease;
+    background: none;
+    border: none;
+    margin-left: 5px;
+    fill: var(--chat-settings-color);
+}
+
+.sidebar {
+    position: absolute;
+    width: 0;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--accent-color);
+    top: 0;
+    align-items: flex-start;
+    transition: 200ms ease;
+}
+
+#chat-settings-closebtn {
+    display: none;
+    margin-left: auto;
+    margin-right: 1vh;
+}
+
+#contacts-closebtn {
+    display: none;
+    margin-right: auto;
+    margin-left: 1vh;
+}
+
+#chat-settings-sidebar {
+    height: 88vh;
+    border-radius: 0 0 0 5vh;
+    right: 0;
+}
+
+#contacts-sidebar {
+    height: 88vh;
+    border-radius: 0 0 5vh 0;
+    left: 0;
+}

@@ -1,5 +1,6 @@
 import './App.css'
 import Chatbox from './Pages/Chatbox';
+import ChatSettings from './Pages/ChatSettings';
 import Main from './Pages/Main';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 		<>
 			<Main />
 			<Chatbox />
+			<ChatSettings />
 		</>
   	);
 }
