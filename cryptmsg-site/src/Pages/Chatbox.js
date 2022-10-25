@@ -47,7 +47,7 @@ function SendText() {
 
 function ReceiveText(text) {
     var msg_board = document.getElementById("message-board");
-    AddMessage(msg_board, "received", text.value);
+    AddMessage(msg_board, "received", text);
     ResizeMsgBoard(msg_board);
     scrollToBottom();
 }

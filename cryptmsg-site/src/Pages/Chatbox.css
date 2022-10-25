@@ -52,12 +52,12 @@
 #received {
     align-self: flex-start;
     background-color: var(--receive-color);
-    color: #f6f6f6
+    color: #f6f6f6;
 }
 
 #input-box {
-    /* min-height: 30px; */
-    /* max-height: 250px; */
+    min-height: 30px;
+    max-height: 250px;
     height: 30px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -95,6 +95,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-end;
 }
 
 #input-submit:hover {

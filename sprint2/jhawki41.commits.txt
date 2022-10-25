@@ -1,0 +1,87 @@
+App.css
+
+bd6d7298 (jacob-hawkins  2022-10-17 18:44:03 -0400  2)     /* --main-background: #2C3639; */
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400  3)     /* --main-background: #312A24; */
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400  4)     /* --text-color: #DCD7C9; */
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400  5)     /* --accent-color: #A27B5C; */
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400  7)     /* --deep-orange: #C07715; */
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400  8)     --main-background: #111111;
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400  9)     --text-color: black;
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400 10)     --accent-color: #ffcb74;
+45d2cfcc (jacob-hawkins  2022-10-19 19:22:23 -0400 11)     --receive-color: #2f2f2f;
+bd6d7298 (jacob-hawkins  2022-10-17 18:44:03 -0400 20)     color: var(--text-color);
+bd6d7298 (jacob-hawkins  2022-10-17 18:44:03 -0400 25)     background-color: var(--main-background);
+
+Chatbox.js
+
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  9) const scrollToBottom = () =>{ 
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400 10)     window.scrollTo({ 
+01459f8a (jacob-hawkins     2022-10-17 19:31:27 -0400 11)         top: document.documentElement.scrollHeight, 
+01459f8a (jacob-hawkins     2022-10-17 19:31:27 -0400 12)         behavior: 'smooth'
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400 13)     }); 
+01459f8a (jacob-hawkins     2022-10-17 19:31:27 -0400 14) }; 
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400 15) 
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 34) 
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 45)     scrollToBottom();
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 47) 
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 53) }
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 54) 
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 56) 
+
+Chatbox.css
+
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400   4)     padding-top: 2vh;
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400   6) 
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  11)     /* background-color: inherit; */
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  12)     /* background-color: transparent; */
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  13)     /* backdrop-filter: blur(1.5rem); */
+01459f8a (jacob-hawkins     2022-10-17 19:31:27 -0400  14)     /* outline: 1px solid red; */
+3e1039a5 (jacob-hawkins     2022-10-18 09:43:51 -0400  28)     flex-direction: column-reverse;
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  31)     width: 85%;
+3e1039a5 (jacob-hawkins     2022-10-18 09:43:51 -0400  32)     /* margin-top: 58%; */
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  36)     /* align-self: flex-start; */
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400  40)     /* background-color: steelblue; */
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  41)     max-width: 30vw;
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  42)     word-wrap: break-word;
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  47) #sent {
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  48)     align-self: flex-end;
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400  49)     background-color: var(--accent-color);
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  52) #received {
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  53)     align-self: flex-start;
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400  54)     background-color: var(--receive-color);
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400  61)     height: 30px;
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  68)     border: 2px solid var(--accent-color);
+01459f8a (jacob-hawkins     2022-10-17 19:31:27 -0400  70)     padding: 20px 15px 15px 20px;
+bd6d7298 (jacob-hawkins     2022-10-17 18:44:03 -0400  72)     background-color: var(--main-background);
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400  74)     color: #f6f6f6;
+3e1039a5 (jacob-hawkins     2022-10-18 09:43:51 -0400  82)     margin-left: -5px;
+3e1039a5 (jacob-hawkins     2022-10-18 09:43:51 -0400  86)     width: 60px;
+3e1039a5 (jacob-hawkins     2022-10-18 09:43:51 -0400  87)     height: 60px;
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400  88)     background-color: var(--accent-color);
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400  89)     /* background-color: #C07715; */
+3e1039a5 (jacob-hawkins     2022-10-18 09:43:51 -0400  93)     /* font-size: 20px; */
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 102)     /* background-color: #E78B10; */
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 103)     background-color: transparent;
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 105)     border: 2px solid var(--accent-color);
+45d2cfcc (jacob-hawkins     2022-10-19 19:22:23 -0400 111)     fill: var(--accent-color);
+
+Main.css
+
+bd6d7298 (jacob-hawkins 2022-10-17 18:44:03 -0400  8)     margin-left: 6vw;
+bd6d7298 (jacob-hawkins 2022-10-17 18:44:03 -0400  9)     font-size: 2vw;
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 10) }
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 11) 
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 12) /* width */
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 13) ::-webkit-scrollbar {
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 14)     width: 5px;
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 15) }
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 16)   
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 17) /* Track */
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 18) ::-webkit-scrollbar-track {
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 19)     background-color: transparent;
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 20) }
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 21)    
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 22) /* Handle */
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 23) ::-webkit-scrollbar-thumb {
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 24)     background: darkgrey; 
+01459f8a (jacob-hawkins 2022-10-17 19:31:27 -0400 25)     border-radius: 10px;
