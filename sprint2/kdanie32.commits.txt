@@ -1,0 +1,110 @@
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  1) [package]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  2) name = "chat"
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  3) version = "0.1.0"
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  4) edition = "2021"
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  5)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  6)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  7) [dependencies]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  8) rocket = { path = "../../core/lib", features = ["json"] }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  9)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 10) [dev-dependencies]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 11) rand = "0.8"
+
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  1) #[macro_use] extern crate rocket;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  2)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  3) #[cfg(test)] mod tests;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  4)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  5) use rocket::{State, Shutdown};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  6) use rocket::fs::{relative, FileServer};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  7) use rocket::form::Form;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  8) use rocket::response::stream::{EventStream, Event};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  9) use rocket::serde::{Serialize, Deserialize};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 10) use rocket::tokio::sync::broadcast::{channel, Sender, error::RecvError};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 11) use rocket::tokio::select;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 12)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 13) #[derive(Debug, Clone, FromForm, Serialize, Deserialize)]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 14) #[cfg_attr(test, derive(PartialEq, UriDisplayQuery))]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 15) #[serde(crate = "rocket::serde")]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 16) struct Message {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 17)     #[field(validate = len(..30))]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 18)     pub room: String,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 19)     #[field(validate = len(..20))]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 20)     pub username: String,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 21)     pub message: String,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 22) }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 23)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 24) /// Returns an infinite stream of server-sent events. Each event is a message
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 25) /// pulled from a broadcast queue sent by the `post` handler.
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 26) #[get("/events")]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 27) async fn events(queue: &State<Sender<Message>>, mut end: Shutdown) -> EventStream![] {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 28)     let mut rx = queue.subscribe();
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 29)     EventStream! {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 30)         loop {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 31)             let msg = select! {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 32)                 msg = rx.recv() => match msg {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 33)                     Ok(msg) => msg,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 34)                     Err(RecvError::Closed) => break,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 35)                     Err(RecvError::Lagged(_)) => continue,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 36)                 },
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 37)                 _ = &mut end => break,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 38)             };
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 39)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 40)             yield Event::json(&msg);
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 41)         }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 42)     }
+
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   1) use std::ops::Range;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   2)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   3) use rand::{thread_rng, Rng};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   4) use rand::distributions::Alphanumeric;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   5)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   6) use rocket::http::{ContentType, Status};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   7) use rocket::http::uri::fmt::{UriDisplay, Query};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   8) use rocket::local::asynchronous::{Client, LocalResponse};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400   9)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  10) use rocket::tokio::{sync, join};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  11) use rocket::tokio::io::{BufReader, AsyncBufReadExt};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  12) use rocket::serde::json;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  13)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  14) use super::*;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  15)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  16) async fn send_message<'c>(client: &'c Client, message: &Message) -> LocalResponse<'c> {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  17)     client.post(uri!(post))
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  18)         .header(ContentType::Form)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  19)         .body((message as &dyn UriDisplay<Query>).to_string())
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  20)         .dispatch()
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  21)         .await
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  22) }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  23)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  24) fn gen_string(len: Range<usize>) -> String {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  25)     thread_rng()
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  26)         .sample_iter(&Alphanumeric)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  27)         .take(thread_rng().gen_range(len))
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  28)         .map(char::from)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  29)         .collect()
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  30) }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  31)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  32) #[async_test]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  33) async fn messages() {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  34)     let client = Client::tracked(rocket()).await.unwrap();
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  35)     let start_barrier = sync::Barrier::new(2);
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  36)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  37)     let shutdown_message = Message {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  38)         room: ":control".into(),
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  39)         username: ":control".into(),
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  40)         message: "shutdown".into(),
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  41)     };
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  42)
+
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  1) import hashLib
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  2) class BlockChain:
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  3)     def __init__(self,prev,actList): #prev is the previous blocks hash and actList is the list of all actions
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  4)         self.prev = prev
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  5)         self.actList = actList
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  6)
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  7)         self.block_data = " ".join(actList) + " " + prev
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  8)         self.block_hash = hashlib.sha256(self.block_data.encode()).hexdigest()
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400  9)
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400 10) first_action = BlockChain("First Transaction", ["Bob","Amy"])
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400 11)
+55644ad1 (Kijan Daniel 2022-10-24 15:06:43 -0400 12) print(first_action.block_data)
