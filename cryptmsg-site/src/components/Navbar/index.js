@@ -11,17 +11,18 @@ function Navbar() {
   const showSidebar = () => setSidebar(!sidebar);
   return(
     <div className="nav-container">
-      <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
+      {/* <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
         <FaIcons.FaBars onClick={showSidebar}/>
-      </IconContext.Provider>
+      </IconContext.Provider> */}
       <h1 className="nav-title">CryptMSG</h1>
 
       {/* Side navbar */}
-      <nav className={sidebar ? 'nav-sidebar active' : 'nav-sidebar'}>
+      {/* <nav className={sidebar ? 'nav-sidebar active' : 'nav-sidebar'}> */}
+      <nav className="nav-sidebar active">
         <div className="nav-sidenav-icon-container">
-          <IconContext.Provider value={ {className: 'nav-close-icon'} }>
+          {/* <IconContext.Provider value={ {className: 'nav-close-icon'} }>
             <IoIcons.IoMdClose onClick={showSidebar}/>
-          </IconContext.Provider>
+          </IconContext.Provider> */}
         </div>
         <ProfileSelector userName="Profile 1" />
         <ProfileSelector userName="Profile 2" />

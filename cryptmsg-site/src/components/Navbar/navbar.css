@@ -14,7 +14,10 @@
 .nav-title {
   color: var(--accent-color);
   font-family: var(--title-font);
-  font-size: 2rem;
+  font-size: 1.4rem;
+  margin-left: 10px;
+  margin-right: auto;
+  z-index: 20;
 }
 
 .nav-bars-icon {
