@@ -10,7 +10,7 @@ function OpenSidebar(name) {
     document.getElementById(`${name}-closebtn`).style.display = "block";
     sidebar.style.width = "17vw";
     sidebar.style.borderWidth = "0 0 2px 2px";
-    if (name == "contacts") {
+    if (name === "contacts") {
         sidebar.style.borderWidth = "0 2px 2px 0";
     }
 }
