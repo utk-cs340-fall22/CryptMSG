@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa'
-import * as IoIcons from 'react-icons/io'
+import React /*, { useState } */ from 'react';
 import * as FiIcons from 'react-icons/fi'
 import * as BiIcons from 'react-icons/bi'
 import { IconContext } from 'react-icons/lib'
 import './navbar.css';
 
 function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+  // const [sidebar, setSidebar] = useState(false);
+  // const showSidebar = () => setSidebar(!sidebar);
   return(
     <div className="nav-container">
       {/* <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
