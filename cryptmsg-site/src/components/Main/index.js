@@ -1,12 +1,11 @@
 import React from 'react'
 import './Main.css'
-import Message from './Message'
-// import Navbar from '../components/Navbar'
+import MessageBoard from '../MessageBoard'
 
 function Main() {
   return (
     <div id='main-body'>
-        <Message />
+        <MessageBoard />
     </div>
   )
 }

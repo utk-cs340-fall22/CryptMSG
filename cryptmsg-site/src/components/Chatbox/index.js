@@ -4,6 +4,7 @@ import './Chatbox.css'
 import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import autosize from 'autosize';
+// import Message from '../Message'
 
 
 const scrollToBottom = () =>{ 
@@ -24,12 +25,34 @@ function ResizeMsgBoard(msg_board) {
     msg_board.style.marginTop = margin + "px";
 }
 
+// Activates when message is hovered over
+function MessageHover() {
+    console.log(this.dataTime);
+}
+
 function AddMessage(msg_board, type, value) {
+    // Create message date
+    var date = new Date();
+    let time = `${date.getHours()}:${date.getMinutes()}`;
+    let test = `${time}`;
+
+    // Create HTML elements
+    var container = document.createElement("div");
     var msg = document.createElement("div");
+    var msgTime = document.createElement("h1");
+
     msg.className = "messages";
     msg.id = type;
+    container.className = type;
     msg.innerHTML = value;
-    msg_board.prepend(msg);
+    msg.dataTime = test;
+    msg.addEventListener('mouseover', MessageHover);
+    msgTime.innerHTML = test;
+    msgTime.className = "msg-time";
+
+    container.appendChild(msg);
+    container.appendChild(msgTime);
+    msg_board.prepend(container);
 }
 
 function SendText() {
