@@ -1,7 +1,7 @@
 import './App.css'
-import Chatbox from './Pages/Chatbox';
-import ChatSettings from './Pages/ChatSettings';
-import Main from './Pages/Main';
+import Chatbox from './components/Chatbox';
+// import ChatSettings from './components/ChatSettings';
+import Main from './components/Main';
 import Navbar from './components/Navbar'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 		<>
 			<Main />
 			<Chatbox />
-			<ChatSettings />
+			{/* <ChatSettings /> */}
 			<Navbar/>
 		</>
   	);
