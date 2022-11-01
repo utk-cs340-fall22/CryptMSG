@@ -1,4 +1,5 @@
 import React /*, { useState } */ from 'react';
+import { Link } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi'
 import * as BiIcons from 'react-icons/bi'
 import { IconContext } from 'react-icons/lib'
@@ -12,7 +13,9 @@ function Navbar() {
       {/* <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
         <FaIcons.FaBars onClick={showSidebar}/>
       </IconContext.Provider> */}
-      <h1 className="nav-title">CryptMSG</h1>
+      <Link to="/home" className="nav-title">
+        <h1 className="nav-title">CryptMSG</h1>
+      </Link>
 
       {/* Side navbar */}
       {/* <nav className={sidebar ? 'nav-sidebar active' : 'nav-sidebar'}> */}

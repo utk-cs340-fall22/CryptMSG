@@ -12,6 +12,7 @@
 }
 
 .nav-title {
+  text-decoration: none;
   color: var(--accent-color);
   font-family: var(--title-font);
   font-size: 1.4rem;
