@@ -1,0 +1,73 @@
+.home-container {
+  display: block;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-background);
+  overflow-y: hidden;
+  max-height: 100vh;
+}
+
+.home-title {
+  color: var(--accent-color);
+  font-size: 5rem;
+  font-family: var(--title-font);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  background: transparent;
+}
+
+.home-link {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  font-family: var(--msg-font);
+  font-size: 2rem;
+  color: var(--accent-color);
+  animation: wobble 1.5s linear infinite;
+  background: transparent;
+}
+
+@keyframes wobble {
+  0%,100% {
+    margin-top: 30px;
+  }
+  50% {
+    margin-top: 40px;
+  }
+}
+
+.home-diagonal-1 {
+  background-color: var(--accent-color);
+  position: absolute;
+  transform: skewY(20deg);
+  width: 100%;
+  height: 2px;
+  margin-top: 40%;
+  overflow: hidden;
+}
+
+.home-diagonal-2 {
+  background-color: var(--accent-color);
+  position: absolute;
+  transform: skewY(-40deg);
+  width: 100%;
+  height: 3px;
+  margin-top: 50%;
+  overflow: hidden;
+}
+
+.home-diagonal-3 {
+  background-color: var(--accent-color);
+  position: absolute;
+  transform: skewY(-40deg);
+  width: 100%;
+  height: 3px;
+  margin-top: calc(50% + 15px);
+  overflow: hidden;
+}

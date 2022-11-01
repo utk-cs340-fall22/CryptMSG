@@ -1,17 +1,24 @@
 import './App.css'
-import Chatbox from './components/Chatbox';
-// import ChatSettings from './components/ChatSettings';
-import Main from './components/Main';
-import Navbar from './components/Navbar'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Messaging from './pages/Messaging';
 
 function App() {
 	return (
-		<>
-			<Main />
+		<body>
+			{/* <Main />
 			<Chatbox />
-			{/* <ChatSettings /> */}
-			<Navbar/>
-		</>
+			{/* <ChatSettings /> 
+			<Navbar/> */}
+			<Router>
+				<Routes>
+					<Route path="/" element={<Navigate replace to="/home" />} />
+					<Route path="/home" element={<Home/>} />
+					<Route path="/messages" element={<Messaging />} />
+				</Routes>
+			</Router>
+		</body>
   	);
 }
 
