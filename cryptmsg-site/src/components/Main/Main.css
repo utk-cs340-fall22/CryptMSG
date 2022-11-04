@@ -1,12 +1,12 @@
 #main-body {
-    width: 75vw;
+    width: 85vw;
     position: absolute;
-    height: 100vh;
+    height: 90vh;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    margin-left: 6vw;
     font-size: 2vw;
+    margin-left: 7.5vw;
 }
 
 /* width */

@@ -5,6 +5,7 @@ import MessageBoard from '../MessageBoard'
 function Main() {
   return (
     <div id='main-body'>
+        <div id="empty-settings"></div>
         <MessageBoard />
     </div>
   )

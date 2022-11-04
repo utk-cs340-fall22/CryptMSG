@@ -1,27 +1,27 @@
 :root {
-    /* --main-background: #2C3639; */
-    /* --main-background: #312A24; */
-    /* --text-color: #DCD7C9; */
-    /* --accent-color: #A27B5C; */
     --msg-font: 'Nunito';
     --title-font: 'Fugaz One';
-    /* --deep-orange: #C07715; */
+    
     --main-background: #111111;
     --text-color: black;
+    --light-text-color: #f6f6f6;
     --accent-color: #ffcb74;
     --light-gray: #181818;
     --lighter-gray: #212121;
     --receive-color: #2f2f2f;
-
     --chat-settings-color: #c2c2c2;
+    --slider-color: white;
+    --settings-hover: #333333;
 }
 
 * {
     margin: 0;
     padding: 0;
     background-color: inherit;
-    color: var(--text-color);
-    /* outline: solid red 1px; */
+    cursor: default;
+    user-select: none;
+    /* color: var(--text-color); */
+    /* outline: solid red 3px; */
 }
 
 body {

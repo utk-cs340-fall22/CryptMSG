@@ -59,7 +59,7 @@
 }
 
 .nav-sidebar.active {
-  transition: 500ms ease;
+  /* transition: 500ms ease; */
   transform: translateX(0px);
 }
 
@@ -71,7 +71,7 @@
   font-size: 1rem;
   color: var(--accent-color);
   cursor: pointer;
-  transition: 150ms ease;
+  /* transition: 150ms ease; */
 }
 
 .nav-profile-option:hover {
@@ -92,17 +92,34 @@
   width: 100%;
   font-size: 1.4rem;
   background-color: var(--lighter-gray);
-  height: 8%;;
+  height: 8%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-color);
 }
 
+.nav-settings:hover {
+    background-color: var(--settings-hover);
+    cursor: pointer;
+}
+
+.nav-settings:hover .nav-settings-icon {
+    animation-name: rotate;
+    animation-duration: 3500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
 .nav-settings-icon {
   stroke: var(--accent-color);
   /* margin-left: 10px; */
-  font-size: 2rem;
+  font-size: 1.75rem;
   position: fixed;
-  left: 10px;
+  left: 25px;
+}
+
+@keyframes rotate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
