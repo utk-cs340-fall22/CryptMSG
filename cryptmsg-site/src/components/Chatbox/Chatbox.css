@@ -32,7 +32,6 @@
     width: 85%;
     /* margin-top: 58%; */
     user-select: text;
-    z-index: 2;
 }
  
 .messages {

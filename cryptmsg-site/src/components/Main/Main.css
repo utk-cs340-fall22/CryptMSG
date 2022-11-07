@@ -1,6 +1,7 @@
 #main-body {
     width: 85vw;
     position: absolute;
+    /* height: 78vh; */
     height: 90vh;
     left: 50%;
     transform: translateX(-50%);
