@@ -57,6 +57,7 @@ const createNode = async (bootstrappers) => {
   await relay.start()
 
   const relayMultiaddrs = relay.getMultiaddrs().map((m) => m.toString())
+  console.log(relayMultiaddrs)
 
   const [node1, node2] = await Promise.all([
     createNode(relayMultiaddrs),
