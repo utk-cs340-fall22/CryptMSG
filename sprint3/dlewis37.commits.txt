@@ -1,0 +1,184 @@
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  1) /* eslint-disable no-console */
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  2) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  3) import { createLibp2p } from 'libp2p'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  4) import { tcp } from '@libp2p/tcp'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  5) import { mplex } from '@libp2p/mplex'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  6) import { noise } from '@chainsafe/libp2p-noise'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  7) import { floodsub } from '@libp2p/floodsub'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  8) import { bootstrap } from '@libp2p/bootstrap'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500  9) import { pubsubPeerDiscovery } from '@libp2p/pubsub-peer-discovery'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 10) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 11) const createNode = async (bootstrappers) => {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 12)   const node = await createLibp2p({
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 13)     addresses: {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 14)       listen: ['/ip4/0.0.0.0/tcp/0']
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 15)     },
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 16)     transports: [tcp()],
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 17)     streamMuxers: [mplex()],
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 18)     connectionEncryption: [noise()],
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 19)     pubsub: floodsub(),
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 20)     peerDiscovery: [
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 21)       bootstrap({
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 22)         list: bootstrappers
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 23)       }),
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 24)       pubsubPeerDiscovery({
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 25)         interval: 1000
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 26)       })
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 27)     ]
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 28)   })
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 29) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 30)   return node
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 31) }
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 32) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 33) ;(async () => {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 34)   const relay = await createLibp2p({
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 35)     addresses: {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 36)       listen: [
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 37)         '/ip4/0.0.0.0/tcp/0'
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 38)       ]
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 39)     },
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 40)     transports: [tcp()],
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 41)     streamMuxers: [mplex()],
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 42)     connectionEncryption: [noise()],
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 43)     pubsub: floodsub(),
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 44)     peerDiscovery: [
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 45)       pubsubPeerDiscovery({
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 46)         interval: 1000
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 47)       })
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 48)     ],
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 49)     relay: {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 50)       enabled: true, // Allows you to dial and accept relayed connections. Does not make you a relay.
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 51)       hop: {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 52)         enabled: true // Allows you to be a relay for other peers
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 53)       }
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 54)     }
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 55)   })
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 56)   console.log(`libp2p relay starting with id: ${relay.peerId.toString()}`)
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 57)   await relay.start()
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 58) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 59)   const relayMultiaddrs = relay.getMultiaddrs().map((m) => m.toString())
+00000000 (Not Committed Yet 2022-11-08 11:21:54 -0500 60)   console.log(relayMultiaddrs)
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 61) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 62)   const [node1, node2] = await Promise.all([
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 63)     createNode(relayMultiaddrs),
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 64)     createNode(relayMultiaddrs)
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 65)   ])
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 66) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 67)   node1.addEventListener('peer:discovery', (evt) => {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 68)     const peer = evt.detail
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 69)     console.log(`Peer ${node1.peerId.toString()} discovered: ${peer.id.toString()}`)
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 70)   })
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 71)   node2.addEventListener('peer:discovery', (evt) => {
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 72)     const peer = evt.detail
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 73)     console.log(`Peer ${node2.peerId.toString()} discovered: ${peer.id.toString()}`)
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 74)   })
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 75) 
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 76)   ;[node1, node2].forEach((node, index) => console.log(`Node ${index} starting with id: ${node.peerId.toString()}`))
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 77)   await Promise.all([
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 78)     node1.start(),
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 79)     node2.start()
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 80)   ])
+03bbcdaf (Dylan Lewis       2022-11-07 23:40:00 -0500 81) })()
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  1) import { createLibp2p } from 'libp2p'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  2) import { webSockets } from '@libp2p/websockets'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  3) import { webRTCStar } from '@libp2p/webrtc-star'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  4) import { noise } from '@chainsafe/libp2p-noise'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  5) import { mplex } from '@libp2p/mplex'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  6) import { bootstrap } from '@libp2p/bootstrap'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  7) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  8) document.addEventListener('DOMContentLoaded', async () => {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  9)   const wrtcStar = webRTCStar()
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 10) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 11)   // Create our libp2p node
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 12)   const libp2p = await createLibp2p({
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 13)     addresses: {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 14)       // Add the signaling server address, along with our PeerId to our multiaddrs list
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 15)       // libp2p will automatically attempt to dial to the signaling server so that it can
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 16)       // receive inbound connections from other peers
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 17)       listen: [
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 18)         '/dns4/immense-everglades-47328.herokuapp.com/tcp/443/wss/p2p-webrtc-star/'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 19) 	  ]
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 20)     },
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 21)     transports: [
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 22)       webSockets(),
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 23)       wrtcStar.transport
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 24)     ],
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 25)     connectionEncryption: [noise()],
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 26)     streamMuxers: [mplex()],
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 27)     peerDiscovery: [
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 28)       wrtcStar.discovery,
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 29)       bootstrap({
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 30)         list: [
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 31)           '/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN',
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 32)           '/dnsaddr/bootstrap.libp2p.io/p2p/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb',
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 33)           '/dnsaddr/bootstrap.libp2p.io/p2p/QmZa1sAxajnQjVM8WjWXoMbmPd7NsWhfKsPkErzpm9wGkp',
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 34)           '/dnsaddr/bootstrap.libp2p.io/p2p/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa',
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 35)           '/dnsaddr/bootstrap.libp2p.io/p2p/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 36)         ]
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 37)       })
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 38)     ]
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 39)   })
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 40) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 41)   // UI elements
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 42)   const status = document.getElementById('status')
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 43)   const output = document.getElementById('output')
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 44) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 45)   output.textContent = ''
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 46) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 47)   function log (txt) {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 48)     console.info(txt)
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 49)     output.textContent += `${txt.trim()}\n`
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 50)   }
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 51) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 52)   // Listen for new peers
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 53)   libp2p.addEventListener('peer:discovery', (evt) => {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 54)     const peer = evt.detail
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 55)     log(`Found peer ${peer.id.toString()}`)
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 56) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 57)     // dial them when we discover them
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 58)     libp2p.dial(evt.detail.id).catch(err => {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 59)       log(`Could not dial ${evt.detail.id}`, err)
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 60)     })
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 61)   })
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 62) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 63)   // Listen for new connections to peers
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 64)   libp2p.connectionManager.addEventListener('peer:connect', (evt) => {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 65)     const connection = evt.detail
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 66)     log(`Connected to ${connection.remotePeer.toString()}`)
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 67)   })
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 68) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 69)   // Listen for peers disconnecting
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 70)   libp2p.connectionManager.addEventListener('peer:disconnect', (evt) => {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 71)     const connection = evt.detail
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 72)     log(`Disconnected from ${connection.remotePeer.toString()}`)
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 73)   })
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 74) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 75)   await libp2p.start()
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 76)   status.innerText = 'libp2p started!'
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 77)   log(`libp2p id is ${libp2p.peerId.toString()}`)
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 78) 
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 79)   // Export libp2p to the window so you can play with the API
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 80)   window.libp2p = libp2p
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 81) })
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500  1) {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  2)   "name": "libp2p-in-browser",
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500  3)   "version": "1.0.0",
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  4)   "description": "A libp2p node running in the browser",
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  5)   "type": "module",
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500  6)   "scripts": {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  7)     "test": "echo \"Error: no test specified\" && exit 1",
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500  8)     "start": "vite"
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500  9)   },
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 10)   "license": "ISC",
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500 11)   "dependencies": {
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500 12)     "@chainsafe/libp2p-noise": "^10.0.1",
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500 13)     "@libp2p/bootstrap": "^5.0.0",
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500 14)     "@libp2p/mplex": "^7.0.0",
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 15)     "@libp2p/webrtc-star": "^5.0.2",
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 16)     "@libp2p/websockets": "^5.0.0",
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500 17)     "libp2p": "^0.40.0"
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500 18)   },
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 19)   "devDependencies": {
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 20)     "vite": "^2.8.6"
+8340496d (Dylan Lewis 2022-11-08 11:24:10 -0500 21)   }
+03bbcdaf (Dylan Lewis 2022-11-07 23:40:00 -0500 22) }
