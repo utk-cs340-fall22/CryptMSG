@@ -25,15 +25,14 @@ None
 - Issue #62 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/62)
 
 ### Files worked on
-CryptMSG/cryptmsg-site/src/componentsChatbox/Chatbox.css
-CryptMSG/cryptmsg-site/src/componentsMain/index.js
-CryptMSG/cryptmsg-site/src/componentsMain/Main.css
-CryptMSG/cryptmsg-site/src/componentsMessageBoard/index.js
-CryptMSG/cryptmsg-site/src/componentsMessageBoard/messageboard.css
-CryptMSG/cryptmsg-site/src/componentsNavbar/index.js
-CryptMSG/cryptmsg-site/src/componentsNavbar/navbar.css
-CryptMSG/cryptmsg-site/src/componentsSettings/index.js
-CryptMSG/cryptmsg-site/src/componentsSettings/settings.css
+CryptMSG/cryptmsg-site/src/components/Chatbox/Chatbox.css
+CryptMSG/cryptmsg-site/src/components/Main/index.js
+CryptMSG/cryptmsg-site/src/components/Main/Main.css
+CryptMSG/cryptmsg-site/src/components/MessageBoard/messageboard.css
+CryptMSG/cryptmsg-site/src/components/Navbar/index.js
+CryptMSG/cryptmsg-site/src/components/Navbar/navbar.css
+CryptMSG/cryptmsg-site/src/components/Settings/index.js
+CryptMSG/cryptmsg-site/src/components/Settings/settings.css
 CryptMSG/cryptmsg-site/src/App.css
 
 

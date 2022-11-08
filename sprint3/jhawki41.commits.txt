@@ -1,0 +1,282 @@
+Chatbox/Chatbox.css
+
+59c9c645 cryptmsg-site/src/components/Chatbox/Chatbox.css (jacob-hawkins  2022-11-04 18:41:16 -0400  34)     user-select: text;
+59c9c645 cryptmsg-site/src/components/Chatbox/Chatbox.css (jacob-hawkins  2022-11-04 18:41:16 -0400  46)     user-select: text;
+59c9c645 cryptmsg-site/src/components/Chatbox/Chatbox.css (jacob-hawkins  2022-11-04 18:41:16 -0400  64) 
+59c9c645 cryptmsg-site/src/components/Chatbox/Chatbox.css (jacob-hawkins  2022-11-04 18:41:16 -0400  84)     color: var(--light-text-color);
+59c9c645 cryptmsg-site/src/components/Chatbox/Chatbox.css (jacob-hawkins  2022-11-04 18:41:16 -0400  96)     color: var(--light-text-color);
+59c9c645 cryptmsg-site/src/components/Chatbox/Chatbox.css (jacob-hawkins  2022-11-04 18:41:16 -0400 115)     color: var(--light-text-color);
+59c9c645 cryptmsg-site/src/components/Chatbox/Chatbox.css (jacob-hawkins  2022-11-04 18:41:16 -0400 117) 
+
+Main/index.js
+
+59c9c645 cryptmsg-site/src/components/Main/index.js (jacob-hawkins 2022-11-04 18:41:16 -0400  8)         <div id="empty-settings"></div>
+
+Main/Main.css
+
+59c9c645 cryptmsg-site/src/components/Main/Main.css (jacob-hawkins 2022-11-04 18:41:16 -0400  2)     width: 85vw;
+200d6c27 cryptmsg-site/src/components/Main/Main.css (jacob-hawkins 2022-11-07 15:09:18 -0500  4)     /* height: 78vh; */
+59c9c645 cryptmsg-site/src/components/Main/Main.css (jacob-hawkins 2022-11-04 18:41:16 -0400  5)     height: 90vh;
+59c9c645 cryptmsg-site/src/components/Main/Main.css (jacob-hawkins 2022-11-04 18:41:16 -0400 10)     margin-left: 7.5vw;
+
+MessageBoard/messageboard.css
+
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 2)   width: 75%;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 3)   margin-left: 8vw;
+
+Navbar/index.js
+
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  2) import * as ReactDOM from 'react-dom/client';
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  8) import Settings from '../Settings';
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 36)         <div className="nav-settings" onClick={displaySettings}>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 59) function displaySettings () {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 60)   let settings = <Settings />
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 61)   const root = ReactDOM.createRoot(document.getElementById("empty-settings"));
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 62)   root.render(settings);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 63) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 64)   document.getElementsByClassName("chatbox")[0].style.display = "none";
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 65)   document.getElementById("message-board").style.display = "none";
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 66) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 67) 
+
+Navbar/navbar.css
+
+2a8a1e43 (jacob-hawkins 2022-11-07 22:36:55 -0500  22)   background-color: transparent;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  63)   /* transition: 500ms ease; */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  75)   /* transition: 150ms ease; */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  96)   height: 8%;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 103) .nav-settings:hover {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 104)     background-color: var(--settings-hover);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 105)     cursor: pointer;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 106) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 107) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 108) .nav-settings:hover .nav-settings-icon {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 109)     animation-name: rotate;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 110)     animation-duration: 3500ms;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 111)     animation-iteration-count: infinite;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 112)     animation-timing-function: linear;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 113) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 114) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 118)   font-size: 1.75rem;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 120)   left: 25px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 121) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 122) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 123) @keyframes rotate {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 124)     0% {transform: rotate(0deg);}
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 125)     100% {transform: rotate(360deg);}
+
+Settings/index.js
+
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  1) import React from 'react'
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  2) import './settings.css';
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  5) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  6) var checked = false;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  7) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  8) const scrollToBottom = () =>{ 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  9)   window.scrollTo({ 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 10)       top: document.documentElement.scrollHeight, 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 11)       behavior: 'smooth'
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 12)   }); 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 13) }; 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 14) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 15) function toggle() {  
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 17)     return (
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 18)       <label class="switch">
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 19)         <input type="checkbox" id="checkbox" onChange={lightmode} />
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 20)         <span class="slider round" />
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 21)       </label>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 22)     )
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 23)   } else { 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 24)     return (
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 25)       <label class="switch">
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 26)           <input type="checkbox" id="checkbox" onChange={lightmode} defaultChecked />
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 27)           <span class="slider round" />
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 28)       </label>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 29)     )
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 30)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 31) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 32) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 35) function Settings() {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 36)   return (
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 37)     <div id="settings">
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 38)       <p id="close-settings" onClick={closeSettings}>X</p>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 39)       <div id="settings-flex">
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 40)         <h1>Settings</h1>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 41)         <div id="darkmode-flex">
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 42)           <p>Light Mode</p>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 43)           { toggle() }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 44)         </div>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 52)       </div>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 53)     </div>
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 54)   )
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 55) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 56) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 57) function closeSettings() {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 58)   const settings = document.getElementById("settings");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 59)   settings.remove();
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 60) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 61)   document.getElementsByClassName("chatbox")[0].style.display = "flex";
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 62)   document.getElementById("message-board").style.display = "flex";
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 63) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 64)   scrollToBottom();
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 65) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 66) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 67) function lightmode() {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 68)   var r = document.querySelector(':root');
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 69)   var checkBox = document.getElementById("checkbox");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 70)   checked = checkBox.checked;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 71)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 72)   if (checked === true) {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 73)     r.style.setProperty('--main-background', "#f6f6f6");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 74)     r.style.setProperty('--light-text-color', "black");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 75)     r.style.setProperty('--accent-color', "#0099ff");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 76)     r.style.setProperty('--light-gray', "#e7e7e7");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 77)     r.style.setProperty('--lighter-gray', "#dedede");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 78)     r.style.setProperty('--settings-hover', "#cccccc");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 79)   } else {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 80)     r.style.setProperty('--main-background', "#111111");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 81)     r.style.setProperty('--light-text-color', "#f6f6f6");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 82)     r.style.setProperty('--accent-color', "#ffcb74");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 83)     r.style.setProperty('--light-gray', "#181818");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 84)     r.style.setProperty('--lighter-gray', "#212121");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 85)     r.style.setProperty('--settings-hover', "#333333");
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 86)   } 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 87) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 88) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 89) export default Settings
+
+Settings/settings.css
+
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   1) #settings {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   2)     /* background-color: lightblue; */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   3)     width: 100%;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   4)     height: 100%;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   5)     position: absolute;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   6)     margin-top: 10vh;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   7)     left: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   8)     font-size: 3vw;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   9)     font-family: var(--msg-font);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  10)     color: var(--light-text-color);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  11) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  12) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  13) #settings-flex {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  14)     display: flex;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  15)     align-items: center;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  16)     flex-direction: column;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  17) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  18) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  19) #settings h1 {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  20)     font-family: var(--title-font);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  21)     color: var(--accent-color);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  22) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  23) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  24) #logout-button {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  25)     font-size: 2vw;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  26)     border: 3px solid red;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  27)     background-color: var(--main-background);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  28)     color: red;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  29)     border-radius: 50px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  30)     padding: 15px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  31)     margin-top: 20vh;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  32) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  33) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  34) #logout-button:hover {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  35)     background-color: red;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  36)     color: var(--main-background);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  37)     cursor: pointer;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  38) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  39) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  40) #close-settings {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  41)     align-items: right;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  42)     margin-bottom: 20vh;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  43)     text-align: right;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  44)     padding-right: 2vw;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  45)     font-size: 2vw;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  46) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  47) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  48) #close-settings:hover {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  49)     color: red;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  50)     cursor: pointer;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  51) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  52) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  53) #darkmode-flex {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  54)     display: flex;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  55)     flex-direction: row;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  56)     align-items: center;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  57)     gap: 10px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  58) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  59) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  60) /* Slider from W3 schools */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  61) /* The switch - the box around the slider */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  62) .switch {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  63)     position: relative;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  64)     display: inline-block;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  65)     width: 60px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  66)     height: 34px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  67)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  68)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  69)   /* Hide default HTML checkbox */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  70)   .switch input {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  71)     opacity: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  72)     width: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  73)     height: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  74)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  75)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  76)   /* The slider */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  77)   .slider {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  78)     position: absolute;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  79)     cursor: pointer;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  80)     top: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  81)     left: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  82)     right: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  83)     bottom: 0;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  84)     background-color: #ccc;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  85)     -webkit-transition: .4s;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  86)     transition: .4s;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  87)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  88)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  89)   .slider:before {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  90)     position: absolute;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  91)     content: "";
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  92)     height: 26px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  93)     width: 26px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  94)     left: 4px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  95)     bottom: 4px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  96)     background-color: var(--slider-color);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  97)     -webkit-transition: .4s;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  98)     transition: .4s;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  99)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 100)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 101)   input:checked + .slider {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 102)     background-color: var(--accent-color);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 103)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 104)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 105)   input:focus + .slider {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 106)     box-shadow: 0 0 1px var(--accent-color);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 107)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 108)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 109)   input:checked + .slider:before {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 110)     -webkit-transform: translateX(26px);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 111)     -ms-transform: translateX(26px);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 112)     transform: translateX(26px);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 113)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 114)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 115)   /* Rounded sliders */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 116)   .slider.round {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 117)     border-radius: 34px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 118)   }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 119)   
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 120)   .slider.round:before {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 121)     border-radius: 50%;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 122)   }
+
+src/App.css
+
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  4)     
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  7)     --light-text-color: #f6f6f6;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 13)     --slider-color: white;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 14)     --settings-hover: #333333;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 21)     cursor: default;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 22)     user-select: none;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 23)     /* color: var(--text-color); */
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 24)     /* outline: solid red 3px; */
