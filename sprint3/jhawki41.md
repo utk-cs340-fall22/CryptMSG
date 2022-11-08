@@ -4,34 +4,38 @@ Jacob Hawkins (jhawki41)
 CryptMSG
 
 ### Plans
-- Display user input messages (Issue #19 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/19))
-- Format messages on site (Issue #20 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/20))
-- Create scrolling mechanism on send and receiving messages (Issue #25 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/25))
-- Wrap text and resize text input box on user input (Issue #26 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/26))
-- Add messages to bottom of stack (Issue #31 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/31))
-- Create recieve message function and print to screen (Issue #34 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/34))
+- Create settings pop up menu (Issue #57 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/57))
+- Create light and dark mode (Issue #58 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/58))
+- Make settings icon spin on hover (Issue #59 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/59))
+- Cursor editing and highlighting rules (Issue #60 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/60))
 
 ### Did not complete
 None
 
 ### Problems encountered
-- Getting the texts to appear at the bottom of the screen and then grow upward.
+- Top message hidden under the top navagation bar
+- On transition from dark to light/light to dark mode, CryptMSG logo had weird transition
 
 ### Issues worked on
-- Issue #19 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/19)
-- Issue #20 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/20)
-- Issue #25 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/25)
-- Issue #26 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/26)
-- Issue #31 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/31)
-- Issue #34 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/34)
+- Issue #57 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/57)
+- Issue #58 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/58)
+- Issue #59 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/59)
+- Issue #60 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/60)
+- Issue #61 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/61)
+- Issue #62 [Link](https://github.com/utk-cs340-fall22/CryptMSG/issues/62)
 
 ### Files worked on
-- CryptMSG/cryptmsg-site/src/App.css
-- CryptMSG/cryptmsg-site/src/Pages/Chatbox.js
-- CryptMSG/cryptmsg-site/src/Pages/Chatbox.css
-- CryptMSG/cryptmsg-site/src/Pages/Main.css
+CryptMSG/cryptmsg-site/src/componentsChatbox/Chatbox.css
+CryptMSG/cryptmsg-site/src/componentsMain/index.js
+CryptMSG/cryptmsg-site/src/componentsMain/Main.css
+CryptMSG/cryptmsg-site/src/componentsMessageBoard/index.js
+CryptMSG/cryptmsg-site/src/componentsMessageBoard/messageboard.css
+CryptMSG/cryptmsg-site/src/componentsNavbar/index.js
+CryptMSG/cryptmsg-site/src/componentsNavbar/navbar.css
+CryptMSG/cryptmsg-site/src/componentsSettings/index.js
+CryptMSG/cryptmsg-site/src/componentsSettings/settings.css
+CryptMSG/cryptmsg-site/src/App.css
 
 
 ### Accomplishments
-I was able to better format the frontend and style the messages better. I was also able to accomplish a better sending and recieving mechanism
-that closer follows traditional messaging application formats.
+I was able to create a settings menu that allows users to switch from dark to light/light to dark mode and sign out of their account. I also fixed some highlighting and cursor rules and fixed a few bugs.
