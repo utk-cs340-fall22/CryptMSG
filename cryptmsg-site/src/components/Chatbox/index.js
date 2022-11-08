@@ -16,10 +16,11 @@ const scrollToBottom = () =>{
 
 function ResizeMsgBoard(msg_board) {
     var chatbox_height = document.querySelector(".chatbox").clientHeight;
+    var nav_height = document.querySelector(".nav-container").clientHeight;
     var margin = window.innerHeight - chatbox_height - msg_board.clientHeight;
 
-    if (margin <= 0) {
-        margin = 0;
+    if (margin <= nav_height) {
+        margin = nav_height;
         msg_board.style.paddingBottom = chatbox_height + "px";
     }
     msg_board.style.marginTop = margin + "px";
