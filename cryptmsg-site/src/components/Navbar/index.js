@@ -6,7 +6,7 @@ import * as BiIcons from 'react-icons/bi'
 import { IconContext } from 'react-icons/lib'
 import './navbar.css';
 import Settings from '../Settings';
-import { FaAppStore } from 'react-icons/fa';
+// import { FaAppStore } from 'react-icons/fa';
 
 function Navbar() {
   // const [sidebar, setSidebar] = useState(false);

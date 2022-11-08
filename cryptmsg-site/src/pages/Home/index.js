@@ -1,6 +1,9 @@
 import React , { Component } from 'react';
 import './home.css';
-import { Link } from 'react-router-dom';
+import LoginButton from './login';
+
+// import { Link } from 'react-router-dom';
+// <Link to="/messages" className="home-link">Welcome</Link>
 
 class Home extends Component {
   render() {
@@ -10,7 +13,7 @@ class Home extends Component {
         <div className="home-diagonal-2"/>
         <div className="home-diagonal-3"/>
         <h1 className="home-title">CryptMSG</h1>
-        <Link to="/messages" className="home-link">Welcome</Link>
+        <LoginButton />
       </div>
     )
   }

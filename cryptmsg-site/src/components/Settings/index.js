@@ -1,5 +1,7 @@
 import React from 'react'
 import './settings.css';
+import LogoutButton from './logout';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 var checked = false;
 
@@ -11,7 +13,7 @@ const scrollToBottom = () =>{
 }; 
 
 function toggle() {  
-  if (checked == false) {
+  if (checked === false) {
     return (
       <label class="switch">
         <input type="checkbox" id="checkbox" onChange={lightmode} />
@@ -28,6 +30,8 @@ function toggle() {
   }
 }
 
+// <button id="logout-button">Logout</button>
+
 function Settings() {
   return (
     <div id="settings">
@@ -38,7 +42,13 @@ function Settings() {
           <p>Light Mode</p>
           { toggle() }
         </div>
-        <button id="logout-button">Logout</button>
+        <Auth0Provider
+          domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
+          clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
+          redirectUri = {"http://localhost:3000/messages"}
+        >
+          <LogoutButton />
+        </Auth0Provider>
       </div>
     </div>
   )
