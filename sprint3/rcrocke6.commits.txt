@@ -1,0 +1,115 @@
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  4) import { Auth0Provider } from "@auth0/auth0-react";
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  9)     <Auth0Provider
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 10)       domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 11)       clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 12)       redirectUri = {"http://localhost:3000/messages"}
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 13)     >
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 14)       <App />
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 15)     </Auth0Provider>
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  3) import LoginButton from './login';
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  4)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  5) // import { Link } from 'react-router-dom';
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  6) // <Link to="/messages" className="home-link">Welcome</Link>
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 16)         <LoginButton />
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  1) import React from "react";
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  2) import { useAuth0 } from "@auth0/auth0-react";
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  3)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  4) const LoginButton = () => {
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  5)   const { loginWithRedirect } = useAuth0();
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  6)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  7)   return <button className="home-link" onClick={() => loginWithRedirect()}>Log In</button>;
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  8) };
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  9)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 10) export default LoginButton;
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 28)   border: none;
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  3) import LogoutButton from './logout';
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  4) import { Auth0Provider } from '@auth0/auth0-react';
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 16)   if (checked === false) {
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 33) // <button id="logout-button">Logout</button>
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 34)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 45)         <Auth0Provider
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 46)           domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 47)           clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 48)           redirectUri = {"http://localhost:3000/messages"}
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 49)         >
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 50)           <LogoutButton />
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 51)         </Auth0Provider>
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  1) import React from "react";
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  2) import { useAuth0 } from "@ath0/auth0-react";
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  3)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  4) const LogoutButton = () => {
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  5)   const { logout } = useAuth0();
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  6)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  7)   return (
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  8)     <button id="logout-button" onClick={() => logout({ returnTo: "http://localhost:3000" })}>Log Out</button>        
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  9)   );
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 10) };
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 11)
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500 12) export default LogoutButton;
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  2) // import Settings from '../ChatSettings';
+d44acb9f (Riley Crockett 2022-11-07 21:48:37 -0500  9) // import { FaAppStore } from 'react-icons/fa';
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  5) import UserProfile from './UserProfile';
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 42)         <Auth0Provider
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 43)           domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 44)           clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 45)           redirectUri = {"http://localhost:3000"}
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 46)         >
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 47)            <UserProfile />
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 48)         </Auth0Provider>
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  24) #profile-wrapper {
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  25)   display: flex;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  26)   align-items: center;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  27)   margin-top: 3vh;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  28)   margin-bottom: 3vh;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  29) }
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  30) 
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  31) #text-wrapper {
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  32)     display: flex;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  33)     align-items: left;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  34)     flex-direction: column;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  35) }
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  36) 
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  37) #text-wrapper p {
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  38)     font-size: 2vw;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  39) }
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  40) 
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  41) #text-wrapper p > span {
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  42)    padding-left: 5vw;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  43) }
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  44) 
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  45) #profile-wrapper img {
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  46)     padding-left: 3vh;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  47)     vertical-align: middle;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  48)     width: 6vw;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  49)     height: 6vw;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  50) }
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  51)
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  1) import React from "react";
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  2) import { useAuth0 } from "@auth0/auth0-react";
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  3)
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  4) const UserProfile = () => {
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  5)   const { user, isLoading, isAuthenticated } = useAuth0();
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  6)
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  7)   if (isLoading) {
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  8)     return <div>Loading ...</div>;
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500  9)   }
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 10)
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 11)   return (
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 12)     isAuthenticated && (
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 13)       <div id="profile-wrapper">
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 14)         <div id="text-wrapper">
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 15)           <p>Username:
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 16)             <span>{user.name}</span>
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 17)           </p>
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 18)           <p>Email:
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 19)             <span>{user.email}</span>
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 20)           </p>
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 21)         </div>
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 22)
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 23)         <img src={user.picture} alt="" />
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 24)       </div>
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 25)     )
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 26)   );
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 27) };
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 28)
+854361df (Riley Crockett 2022-11-08 16:26:19 -0500 29) export default UserProfile;
