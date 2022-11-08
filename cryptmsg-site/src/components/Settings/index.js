@@ -2,6 +2,7 @@ import React from 'react'
 import './settings.css';
 import LogoutButton from './logout';
 import { Auth0Provider } from '@auth0/auth0-react';
+import UserProfile from './UserProfile';
 
 var checked = false;
 
@@ -38,6 +39,13 @@ function Settings() {
       <p id="close-settings" onClick={closeSettings}>X</p>
       <div id="settings-flex">
         <h1>Settings</h1>
+        <Auth0Provider
+          domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
+          clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
+          redirectUri = {"http://localhost:3000"}
+        >
+           <UserProfile />
+        </Auth0Provider>
         <div id="darkmode-flex">
           <p>Light Mode</p>
           { toggle() }

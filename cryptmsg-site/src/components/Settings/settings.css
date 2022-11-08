@@ -21,6 +21,34 @@
     color: var(--accent-color);
 }
 
+#profile-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+#text-wrapper {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+
+#text-wrapper p {
+    font-size: 2vw;
+}
+
+#text-wrapper p > span {
+   padding-left: 5vw;
+}
+
+#profile-wrapper img {
+    padding-left: 3vh;
+    vertical-align: middle;
+    width: 6vw;
+    height: 6vw;
+}
+
 #logout-button {
     font-size: 2vw;
     border: 3px solid red;
