@@ -1,0 +1,88 @@
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500  1) #[macro_use] extern crate rocket;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  2)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  3) use rocket::{State, Shutdown};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  4) use rocket::fs::{relative, FileServer};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  5) use rocket::form::Form;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  6) use rocket::response::stream::{EventStream, Event};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  7) use rocket::serde::{Serialize, Deserialize};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  8) use rocket::tokio::sync::broadcast::{channel, Sender, error::RecvError};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  9) use rocket::tokio::select;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 10)
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 11) #[get("/world")]
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 12) fn world() -> &'static str {
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 13)     "Hello, world!"
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 14) }
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 15)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 16) #[derive(Debug, Clone, FromForm, Serialize, Deserialize)]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 17) #[serde(crate = "rocket::serde")]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 18) struct Message {
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 19)     #[field(validate = len(..30))]//Room name can only be 29 chars long
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 20)     pub room: String,
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 21)     #[field(validate = len(..20))]//Username can only be 19 chars long
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 22)     pub username: String,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 23)     pub message: String,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 24) }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 25)
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 26) #[post("/message", data = "<form>")]
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 27) fn post(form: From<Messages>, queue: &State<Sender<Message>>) {
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 28)     let _res = queue.send(form.into_inner());
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 29) }
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 30)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 31) #[get("/events")]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 32) async fn events(queue: &State<Sender<Message>>, mut end: Shutdown) -> EventStream![] {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 33)     let mut rx = queue.subscribe();
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 34)     EventStream! {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 35)         loop {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 36)             let msg = select! {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 37)                 msg = rx.recv() => match msg {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 38)                     Ok(msg) => msg,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 39)                     Err(RecvError::Closed) => break,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 40)                     Err(RecvError::Lagged(_)) => continue,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 41)                 },
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 42)                 _ = &mut end => break,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 43)             };
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 44)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 45)             yield Event::json(&msg);
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 46)         }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 47)     }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 48) }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 49)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 50) #[launch]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 51) fn rocket() -> _ {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 52)     rocket::build()
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 53)         .manage(channel::<Message>(1024).0)//The channel can hold 1024 messages at a time
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500 54)         .mount("/hello", routes![world])
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 55) }
+
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  1) [package]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  2) name = "chat"
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  3) version = "0.1.0"
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  4) edition = "2021"
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  5)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  6)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  7) [dependencies]
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500  8) rocket = { version = "0.5.0-rc.2", features = ["json"] }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  9)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 10) [dev-dependencies]
+c68f4d6b (Kijan Daniel 2022-11-08 08:21:29 -0500 11) rand = "0.8"
+
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500    5) [[package]]
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500    6) name = "aead"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500    7) version = "0.5.1"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500    8) source = "registry+https://github.com/rust-lang/crates.io-index"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500    9) checksum = "5c192eb8f11fc081b0fe4259ba5af04217d4e0faddd02417310a927911abd7c8"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   10) dependencies = [
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   11)  "crypto-common",
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   12)  "generic-array",
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   13) ]
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   14)
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   15) [[package]]
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   16) name = "aes"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   17) version = "0.8.2"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   18) source = "registry+https://github.com/rust-lang/crates.io-index"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   19) checksum = "433cfd6710c9986c576a25ca913c39d66a6474107b406f34f91d4a8923395241"
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   20) dependencies = [
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   21)  "cfg-if",
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   22)  "cipher",
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   23)  "cpufeatures",
+5382d267 (Kijan Daniel 2022-11-08 09:09:03 -0500   24) ]
