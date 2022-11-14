@@ -1,0 +1,387 @@
+0696147c (Reagan Austin  2022-10-27 18:42:42 -0400  1) import React /*, { useState } */ from 'react';
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  3) import { Link } from 'react-router-dom';
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400  4) import * as FiIcons from 'react-icons/fi'
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400  5) import * as BiIcons from 'react-icons/bi'
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400  6) import { IconContext } from 'react-icons/lib'
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400  7) import './navbar.css';
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 10) 
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 11) function Navbar() {
+0696147c (Reagan Austin  2022-10-27 18:42:42 -0400 12)   // const [sidebar, setSidebar] = useState(false);
+0696147c (Reagan Austin  2022-10-27 18:42:42 -0400 13)   // const showSidebar = () => setSidebar(!sidebar);
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 14)   return(
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 15)     <div className="nav-container">
+826eb0f5 (Reagan Austin  2022-10-27 18:41:11 -0400 16)       {/* <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 17)         <FaIcons.FaBars onClick={showSidebar}/>
+826eb0f5 (Reagan Austin  2022-10-27 18:41:11 -0400 18)       </IconContext.Provider> */}
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 19)       <Link to="/home" className="nav-title">
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 20)         <h1 className="nav-title">CryptMSG</h1>
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 21)       </Link>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 22) 
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 23)       {/* Side navbar */}
+826eb0f5 (Reagan Austin  2022-10-27 18:41:11 -0400 24)       {/* <nav className={sidebar ? 'nav-sidebar active' : 'nav-sidebar'}> */}
+826eb0f5 (Reagan Austin  2022-10-27 18:41:11 -0400 25)       <nav className="nav-sidebar active">
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 26)         <div className="nav-sidenav-icon-container">
+826eb0f5 (Reagan Austin  2022-10-27 18:41:11 -0400 27)           {/* <IconContext.Provider value={ {className: 'nav-close-icon'} }>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 28)             <IoIcons.IoMdClose onClick={showSidebar}/>
+826eb0f5 (Reagan Austin  2022-10-27 18:41:11 -0400 29)           </IconContext.Provider> */}
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 30)         </div>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 31)         <ProfileSelector userName="Profile 1" />
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 32)         <ProfileSelector userName="Profile 2" />
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 33)         <ProfileSelector userName="Profile 3" />
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 34)         <ProfileSelector userName="Profile 4" />
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 35)         <ProfileSelector userName="Profile 5" />
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 37)           <IconContext.Provider value={ {className: 'nav-settings-icon'} }>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 38)             <FiIcons.FiSettings />
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 39)           </IconContext.Provider>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 40)           Settings
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 41)         </div>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 42)       </nav>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 43)     </div>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 44)   );
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 45) }
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 46) 
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 47) // Displays a tile in the sidenav for the people that the user can chat with
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 48) function ProfileSelector(props) {
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 49)   return(
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 50)     <div className="nav-profile-option">
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 51)       <IconContext.Provider value={ {className: 'nav-sidebar-icon'} }>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 52)         <BiIcons.BiPencil />
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 53)       </IconContext.Provider>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 54)       {props.userName}
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 55)     </div>
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 56)   )
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 57) }
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 58) 
+6c22f1f6 (Reagan Austin  2022-10-25 18:32:05 -0400 68) export default Navbar;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   1) .nav-container {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   2)   height: 8vh;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   3)   width: 100vw;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   4)   position: fixed;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   5)   background-color: var(--light-gray);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   6)   top: 0;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   7)   left: 0;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   8)   z-index: 15;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   9)   display: flex;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  10)   justify-content: center;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  11)   align-items: center;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  12) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  13) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  14) .nav-title {
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400  15)   text-decoration: none;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  16)   color: var(--accent-color);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  17)   font-family: var(--title-font);
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  18)   font-size: 1.4rem;
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  19)   margin-left: 10px;
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  20)   margin-right: auto;
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  21)   z-index: 20;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  23) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  24) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  25) .nav-bars-icon {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  26)   fill: var(--accent-color);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  27)   font-size: 1.5rem;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  28)   position: fixed;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  29)   left: 10px;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  30)   cursor: pointer;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  31) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  32) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  33) .nav-sidenav-icon-container {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  34)   width: 100%;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  35)   height: 8%;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  36)   display: flex;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  37)   align-items: center;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  38) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  39) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  40) .nav-close-icon {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  41)   fill: var(--accent-color);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  42)   background: transparent;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  43)   font-size: 2.3rem;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  44)   margin-left: 10px;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  45)   cursor: pointer;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  46) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  47) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  48) .nav-sidebar {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  49)   font-family: var(--msg-font);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  50)   display: flex;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  51)   flex-direction: column;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  52)   width: 15vw;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  53)   height: 100vh;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  54)   position: fixed;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  55)   top: 0;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  56)   left: 0;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  57)   transform: translateX(-18vw);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  58)   transition: 500ms ease;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  59)   background-color: var(--light-gray);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  60) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  61) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  62) .nav-sidebar.active {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  64)   transform: translateX(0px);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  65) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  66) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  67) .nav-profile-option {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  68)   width: 100%;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  69)   height: 5%;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  70)   display: flex;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  71)   align-items: center;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  72)   font-size: 1rem;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  73)   color: var(--accent-color);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  74)   cursor: pointer;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  76) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  77) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  78) .nav-profile-option:hover {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  79)   background-color: var(--lighter-gray);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  80)   transition: 150ms ease;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  81) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  82) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  83) .nav-sidebar-icon {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  84)   fill: var(--accent-color);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  85)   font-size: 1.5rem;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  86)   margin-left: 10px;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  87)   margin-right: 10px;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  88) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  89) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  90) .nav-settings {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  91)   position: fixed;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  92)   bottom: 0;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  93)   width: 100%;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  94)   font-size: 1.4rem;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  95)   background-color: var(--lighter-gray);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  97)   display: flex;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  98)   align-items: center;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  99)   justify-content: center;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 100)   color: var(--accent-color);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 101) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 102) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 115) .nav-settings-icon {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 116)   stroke: var(--accent-color);
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 117)   /* margin-left: 10px; */
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 119)   position: fixed;
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 126) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  1) import React , { Component } from 'react';
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  2) import './home.css';
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  7) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  8) class Home extends Component {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  9)   render() {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 10)     return(
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 11)       <div className="home-container">
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 12)         <div className="home-diagonal-1"/>
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 13)         <div className="home-diagonal-2"/>
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 14)         <div className="home-diagonal-3"/>
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 15)         <h1 className="home-title">CryptMSG</h1>
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 17)       </div>
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 18)     )
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 19)   }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 20) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 21) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 22) export default Home;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  1) .home-container {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  2)   display: block;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  3)   position: relative;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  4)   align-items: center;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  5)   width: 100%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  6)   height: 100%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  7)   background-color: var(--main-background);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  8)   overflow-y: hidden;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400  9)   max-height: 100vh;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 10) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 11) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 12) .home-title {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 13)   color: var(--accent-color);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 14)   font-size: 5rem;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 15)   font-family: var(--title-font);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 16)   position: absolute;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 17)   left: 50%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 18)   top: 50%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 19)   transform: translate(-50%, -100%);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 20)   background: transparent;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 21) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 22) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 23) .home-link {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 24)   position: absolute;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 25)   left: 50%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 26)   top: 50%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 27)   transform: translate(-50%, -50%);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 29)   text-decoration: none;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 30)   font-family: var(--msg-font);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 31)   font-size: 2rem;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 32)   color: var(--accent-color);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 33)   animation: wobble 1.5s linear infinite;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 34)   background: transparent;
+7558091b (Reagan Austin  2022-11-01 15:29:59 -0400 35)   transition: 200ms;
+7558091b (Reagan Austin  2022-11-01 15:29:59 -0400 36) }
+7558091b (Reagan Austin  2022-11-01 15:29:59 -0400 37) .home-link:hover {
+7558091b (Reagan Austin  2022-11-01 15:29:59 -0400 38)   color: #ffffff;
+7558091b (Reagan Austin  2022-11-01 15:29:59 -0400 39)   transition: 200ms ease;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 40) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 41) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 42) @keyframes wobble {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 43)   0%,100% {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 44)     margin-top: 30px;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 45)   }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 46)   50% {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 47)     margin-top: 40px;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 48)   }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 49) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 50) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 51) .home-diagonal-1 {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 52)   background-color: var(--accent-color);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 53)   position: absolute;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 54)   transform: skewY(20deg);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 55)   width: 100%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 56)   height: 2px;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 57)   margin-top: 40%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 58)   overflow: hidden;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 59) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 60) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 61) .home-diagonal-2 {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 62)   background-color: var(--accent-color);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 63)   position: absolute;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 64)   transform: skewY(-40deg);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 65)   width: 100%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 66)   height: 3px;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 67)   margin-top: 50%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 68)   overflow: hidden;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 69) }
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 70) 
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 71) .home-diagonal-3 {
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 72)   background-color: var(--accent-color);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 73)   position: absolute;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 74)   transform: skewY(-40deg);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 75)   width: 100%;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 76)   height: 3px;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 77)   margin-top: calc(50% + 15px);
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 78)   overflow: hidden;
+1259137c (Reagan Austin  2022-11-01 01:32:28 -0400 79) }
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400   2) import { Component } from 'react'
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-17 21:30:19 -0400   4) import * as FaIcons from 'react-icons/fa'
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-17 21:30:19 -0400   5) import { IconContext } from 'react-icons/lib'
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400   6) import autosize from 'autosize';
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400   7) // import Message from '../Message'
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400   8) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  29) // Activates when message is hovered over
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  30) function MessageHover() {
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  31)     console.log(this.dataTime);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  32) }
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  33) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  35)     // Create message date
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  36)     var date = new Date();
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  37)     let time = `${date.getHours()}:${date.getMinutes()}`;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  38)     let test = `${time}`;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  39) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  40)     // Create HTML elements
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  41)     var container = document.createElement("div");
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  43)     var msgTime = document.createElement("h1");
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  44) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  47)     container.className = type;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  49)     msg.dataTime = test;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  50)     msg.addEventListener('mouseover', MessageHover);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  51)     msgTime.innerHTML = test;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  52)     msgTime.className = "msg-time";
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  53) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  54)     container.appendChild(msg);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  55)     container.appendChild(msgTime);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  56)     msg_board.prepend(container);
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  88) class Chatbox extends Component {   
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  89)     componentDidMount(){
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  90)         // This causes the text area to autoresize when needing more or less lines of input
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  91)         const tarea = document.getElementById("input-box");
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  92)         autosize(tarea);
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  93)     } 
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  94) 
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  95)     render() {
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  96)         return (
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  97)             <div className='chatbox'>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  98)                 <div>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  99)                     <textarea id="input-box" onKeyDown={EnterInput} rows="1" cols="50" wrap="soft"/>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 100)                     <IconContext.Provider value={{ className: 'input-submit-icon' }}>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 101)                         <button id="input-submit" onClick={SendText}>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 102)                             <FaIcons.FaPaperPlane />
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 103)                         </button>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 104)                     </IconContext.Provider>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 105)                 </div>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 107)         );
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 108)     } 
+7558091b cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-11-01 15:29:59 -0400   3)     margin-left: 5%;
+315db07e cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-18 17:11:57 -0400  11)     /* background-color: var(--deep-orange); */
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400  43)     font-family: var(--msg-font);
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400  44)     font-size: 1.6rem;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  45)     transition: 200ms ease;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  47) }
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  48) 
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  49) .msg-time {
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  50)     opacity: 0;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  51)     font-size: 0rem;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  52)     font-family: var(--msg-font);
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  53)     color: var(--accent-color);
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  54)     visibility: hidden;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  55)     transition: 200ms ease;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  56) }
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  57) 
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  58) .sent {
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  59)     display: flex;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  60)     justify-content: center;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  61)     align-items: center;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  62)     align-self: flex-end;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  63) }
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  65) .sent:hover > .msg-time {
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  66)     margin: 10px;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  67)     opacity: 1;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  68)     visibility: visible;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  69)     font-size: 1rem;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  70)     transition: 200ms ease;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  71) }
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  72) 
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  73) .received {
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  74)     display: flex;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  75)     justify-content: center;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  76)     align-items: center;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  77)     align-self: flex-start;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  78) }
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  79) .received:hover > .msg-time {
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  80)     margin: 10px;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  81)     opacity: 1;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  82)     visibility: visible;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  83)     font-size: 1rem;
+cf711369 cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-30 23:35:58 -0400  85)     transition: 200ms ease;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 110)     border-radius: 30px;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 114)     font-family: var(--msg-font);
+315db07e cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-18 17:11:57 -0400 116)     resize: none;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 119) }
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 120) 
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 121) .input-submit-icon {
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 122)     font-size: 1.5rem;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 123)     transition: 200ms ease;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 124)     background: none;
+fbec55ac cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-31 13:41:26 -0400 133)     /* border: none; */
+fbec55ac cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-31 13:41:26 -0400 134)     border: 2px solid var(--accent-color);
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 138)     transition: 200ms ease;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 139)     display: flex;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 140)     align-items: center;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 141)     justify-content: center;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 148)     transition: 200ms ease;
+fbec55ac cryptmsg-site/src/components/Chatbox/Chatbox.css (Reagan Austin  2022-10-31 13:41:26 -0400 149)     /* border: 2px solid var(--accent-color); */
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 150) }
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 151) 
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 152) #input-submit:hover > .input-submit-icon {
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 153)     font-size: 1.8rem;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 154)     transition: 200ms ease;
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 156) }
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 157) 
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 158) #input-box:focus {
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.css              (Reagan Austin  2022-10-17 21:30:19 -0400 159)     outline: 0;
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400  2) import React from 'react';
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400  3) import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400  4) import Home from './pages/Home';
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400  5) import Messaging from './pages/Messaging';
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400  7) function App() {
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400  9) 		<body>
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 10) 			<Router>
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 11) 				<Routes>
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 12) 					<Route path="/" element={<Navigate replace to="/home" />} />
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 13) 					<Route path="/home" element={<Home/>} />
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 14) 					<Route path="/messages" element={<Messaging />} />
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 15) 				</Routes>
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 16) 			</Router>
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400 17) 		</body>
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 19) }
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 20) 
+110b9c71 (Reagan Austin 2022-09-27 07:29:11 -0400 21) export default App;
