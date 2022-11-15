@@ -16,9 +16,9 @@ function Navbar() {
       {/* <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
         <FaIcons.FaBars onClick={showSidebar}/>
       </IconContext.Provider> */}
-      <Link to="/home" className="nav-title">
+      {/* <Link to="/home" className="nav-title"> */}
         <h1 className="nav-title">CryptMSG</h1>
-      </Link>
+      {/* </Link> */}
 
       {/* Side navbar */}
       {/* <nav className={sidebar ? 'nav-sidebar active' : 'nav-sidebar'}> */}
