@@ -51,7 +51,7 @@ function Navbar() {
           <Auth0Provider
             domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
             clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
-            redirectUri = {"http://cryptmsg.net/home"}
+            redirectUri = {"https://cryptmsg.net/home"}
           >
             <MessagingUser />
           </Auth0Provider>
