@@ -13,8 +13,8 @@ function App() {
 			<Navbar/> */}
 			<Router>
 				<Routes>
-					<Route path="/" element={<Navigate replace to="/home" />} />
-					<Route path="/home" element={<Home/>} />
+					{/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
+					<Route path="/" element={<Home/>} />
 					<Route path="/messages" element={<Messaging />} />
 				</Routes>
 			</Router>
