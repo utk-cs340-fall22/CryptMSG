@@ -10,13 +10,7 @@ const MessagingUser = () => {
 
   return (
     isAuthenticated && (
-        <>
-        <img src={user.picture} alt="" id="nav-img" />
-        
-        <div id="text-wrapper">
-            <span id="nav-username">{user.name}</span>
-        </div>
-        </>
+      <img src={user.picture} alt="" id="nav-img" />
     )
   );
 };

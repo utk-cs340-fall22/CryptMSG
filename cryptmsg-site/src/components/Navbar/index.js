@@ -45,14 +45,17 @@ function Navbar() {
         <ProfileSelector userName="Profile 3" />
         <ProfileSelector userName="Profile 4" />
         <ProfileSelector userName="Profile 5" /> */}
-        <p id="nav-message-title">Messaging</p>
-        <Auth0Provider
-          domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
-          clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
-          redirectUri = {"http://localhost:3000"}
-        >
-           <MessagingUser />
-        </Auth0Provider>
+        <p id="nav-message-title">Chatroom ID:</p>
+        <p id="nav-message-hash"></p>
+        <div id="nav-user">
+          <Auth0Provider
+            domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
+            clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
+            redirectUri = {"http://cryptmsg.net/home"}
+          >
+            <MessagingUser />
+          </Auth0Provider>
+        </div>
 
 
         <div className="nav-settings" onClick={displaySettings}>
@@ -127,6 +130,7 @@ function submitHash(newChatBox) {
   hash = newChatBox.value;
   console.log(hash);
   newChatBox.value = "";
+  if (hash != "") document.getElementById("nav-message-hash").innerHTML = hash;
 }
 
 export default Navbar;
