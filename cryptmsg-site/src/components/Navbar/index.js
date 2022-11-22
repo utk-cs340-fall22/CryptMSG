@@ -130,7 +130,7 @@ function submitHash(newChatBox) {
   hash = newChatBox.value;
   console.log(hash);
   newChatBox.value = "";
-  if (hash != "") document.getElementById("nav-message-hash").innerHTML = hash;
+  if (hash !== "") document.getElementById("nav-message-hash").innerHTML = hash;
 }
 
 export default Navbar;
