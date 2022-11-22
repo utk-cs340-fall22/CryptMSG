@@ -51,7 +51,7 @@ function Navbar() {
           <Auth0Provider
             domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
             clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
-            redirectUri = {"https://cryptmsg.net"}
+            redirectUri = {"https://cryptmsg.netlify.app"}
           >
             <MessagingUser />
           </Auth0Provider>
