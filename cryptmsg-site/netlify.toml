@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/*"
-  to = "https://cryptmsg.net/messages"
+  to = "/messages"
   status = 200
