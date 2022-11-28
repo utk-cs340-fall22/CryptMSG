@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/callback"
+  from = "/*"
   to = "https://cryptmsg.net/messages"
   status = 200
