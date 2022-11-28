@@ -1,6 +1,6 @@
 import './App.css'
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Messaging from './pages/Messaging';
 
@@ -13,8 +13,8 @@ function App() {
 			<Navbar/> */}
 			<Router>
 				<Routes>
-					<Route path="/" element={<Navigate replace to="/home" />} />
-					<Route path="/home" element={<Home/>} />
+					{/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
+					<Route path="/" element={<Home/>} />
 					<Route path="/messages" element={<Messaging />} />
 				</Routes>
 			</Router>
