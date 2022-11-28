@@ -7,7 +7,7 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <button id="logout-button" onClick={() => logout({ returnTo: "https://cryptmsg.net/" })}>Log Out</button>
+    <button id="logout-button" onClick={() => logout({ returnTo: "https://cryptmsg.net" })}>Log Out</button>
   );
 };
 
