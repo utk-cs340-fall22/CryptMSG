@@ -32,6 +32,8 @@ function toggle() {
 }
 
 // <button id="logout-button">Logout</button>
+// redirectUri = {"http://localhost:3000"}
+// redirectUri = {"http://localhost:3000/messages"}
 
 function Settings() {
   return (
@@ -42,7 +44,7 @@ function Settings() {
         <Auth0Provider
           domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
           clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
-          redirectUri = {"http://localhost:3000"}
+          redirectUri = {"https://cryptmsg.net"}
         >
            <UserProfile />
         </Auth0Provider>
@@ -53,7 +55,7 @@ function Settings() {
         <Auth0Provider
           domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
           clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
-          redirectUri = {"http://localhost:3000/messages"}
+          redirectUri = {"https://cryptmsg.net/messages"}
         >
           <LogoutButton />
         </Auth0Provider>
