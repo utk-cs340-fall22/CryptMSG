@@ -31,6 +31,26 @@ function MessageHover() {
     console.log(this.dataTime);
 }
 
+const isValidUrl = urlString=> {
+    var urlPattern = new RegExp('^(https?:\\/\\/)?'+
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+
+    '(\\#[-a-z\\d_]*)?$','i');
+    return !!urlPattern.test(urlString);
+}
+
+function CreateLink(value) {
+    var msg = document.createElement("a");
+    var link = document.createTextNode(`${value}`);
+    msg.appendChild(link);
+    msg.href=`${value}`;
+    msg.target = "_blank";
+    msg.rel = "noopener noreferrer";
+    return msg;
+}
+
 function AddMessage(msg_board, type, value) {
     // Create message date
     var date = new Date();
@@ -39,8 +59,14 @@ function AddMessage(msg_board, type, value) {
 
     // Create HTML elements
     var container = document.createElement("div");
-    var msg = document.createElement("div");
+    var msg;
+    if (isValidUrl(value)) {
+        msg = CreateLink(value);
+    } else {
+        msg = document.createElement("div");
+    }
     var msgTime = document.createElement("h1");
+    // var msg = document.createElement("div");
 
     msg.className = "messages";
     msg.id = type;
