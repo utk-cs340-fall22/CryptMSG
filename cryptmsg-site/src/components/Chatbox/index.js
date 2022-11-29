@@ -4,7 +4,7 @@ import './Chatbox.css'
 import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import autosize from 'autosize';
-import axios from 'axios'
+// import axios from 'axios'
 //let newMessageForm = document.getElementById('Message');
 //let messageField = newMessageForm.querySelector("#Message");
 // import Message from '../Message'
