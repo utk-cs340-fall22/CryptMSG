@@ -9,7 +9,7 @@ import autosize from 'autosize';
 //let messageField = newMessageForm.querySelector("#Message");
 // import Message from '../Message'
 
-  var messagesDiv = document.getElementById('messages');
+//   var messagesDiv = document.getElementById('messages');
 const scrollToBottom = () =>{ 
     window.scrollTo({ 
         top: document.documentElement.scrollHeight, 
@@ -99,7 +99,7 @@ function SendText() {
     var msg_board = document.getElementById("message-board");
     if (input_box.value.length === 0) { return; }
     var holder1 = input_box.value;
-    var message = new URLSearchParams({ holder1 });
+    // var message = new URLSearchParams({ holder1 });
     AddMessage(msg_board, "sent", input_box.value);
     // console.log(message)
     // axios
@@ -153,7 +153,7 @@ function subscribe(uri) {
         console.log("raw data", JSON.stringify(ev.data));
         console.log("decoded data", JSON.stringify(JSON.parse(ev.data)));
         const msg = JSON.parse(ev.data);
-        if (!"className" in msg || !"id" in msg || !"message" in msg) return;
+        if (!("className" in msg) || !("id" in msg) || !("message" in msg)) return;
         ReceiveText(msg.message)
       });
   
