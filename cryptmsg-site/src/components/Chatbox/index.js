@@ -98,7 +98,7 @@ function SendText() {
     var input_box = document.getElementById("input-box");
     var msg_board = document.getElementById("message-board");
     if (input_box.value.length === 0) { return; }
-    var holder1 = input_box.value;
+    // var holder1 = input_box.value;
     // var message = new URLSearchParams({ holder1 });
     AddMessage(msg_board, "sent", input_box.value);
     // console.log(message)
@@ -110,16 +110,16 @@ function SendText() {
     //     .catch(error => {
     //         console.log(error)
     //     })
-    let response = fetch("/message", {
-        method: "POST",
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        // body: '{"content": "This is a test"}'
-        body: `{"message":` + JSON.stringify(input_box.value) + `}`
-        // body: new URLSearchParams({ holder }),
-      }).then((response) => {
-        console.log("response", response)
-//        if (response.ok) messageField.value = "";
-      });
+//     let response = fetch("/message", {
+//         method: "POST",
+//         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+//         // body: '{"content": "This is a test"}'
+//         body: `{"message":` + JSON.stringify(input_box.value) + `}`
+//         // body: new URLSearchParams({ holder }),
+//       }).then((response) => {
+//         console.log("response", response)
+// //        if (response.ok) messageField.value = "";
+//       });
     
     input_box.value = "";
     input_box.innerHTML = "";
