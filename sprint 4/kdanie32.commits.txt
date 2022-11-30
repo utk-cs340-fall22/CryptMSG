@@ -1,0 +1,110 @@
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 147) function subscribe(uri) {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 148)     var retryTime = 1;
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 149)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 150)     function connect(uri) {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 151)       const events = new EventSource(uri);
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 152)       events.addEventListener("message", (ev) => {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 153)         console.log("raw data", JSON.stringify(ev.data));
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 154)         console.log("decoded data", JSON.stringify(JSON.parse(ev.data)));
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 155)         const msg = JSON.parse(ev.data);
+824a1cdd cryptmsg-site/src/components/Chatbox/index.js (Jacob Hawkins  2022-11-28 19:10:07 -0500 156)         if (!("className" in msg) || !("id" in msg) || !("message" in msg)) return;
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 157)         ReceiveText(msg.message)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 158)       });
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 159)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 160)       events.addEventListener("open", () => {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 161)         //setConnectedStatus(true);
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 162)         console.log(`connected to event stream at ${uri}`);
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 163)         retryTime = 1;
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 164)       });
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 165)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 166)       events.addEventListener("error", () => {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 167)         //setConnectedStatus(false);
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 168)         events.close();
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 169)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 170)         let timeout = retryTime;
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 171)         retryTime = Math.min(64, retryTime * 2);
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 172)         console.log(`connection lost. attempting to reconnect in ${timeout}s`);
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 173)         setTimeout(() => connect(uri), (() => timeout * 1000)());
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 174)       });
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 175)     }
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 176)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 177)     connect(uri);
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 178)   }
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  76)     msg.message = value;
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  87)     console.log(msg)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  88) /*    axios.post("http://localhost:3000/messages", msg.state)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  89)     .then(response => {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  90)         console.log(response)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  91)     })
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  92)     .catch(error =>{
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  93)         console.log(error)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500  94)     })*/
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 104)     // console.log(message)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 105)     // axios
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 106)     //     .post("/message",  message)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 107)     //     .then(response => {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 108)     //         console.log(response)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 109)     //     })
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 110)     //     .catch(error => {
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 111)     //         console.log(error)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 112)     //     })
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 210)
+fec0173a cryptmsg-site/src/components/Chatbox/index.js (Kijan Daniel   2022-11-28 18:14:02 -0500 211)   subscribe("/events");
+05a9ce4c (Kijan Daniel 2022-11-08 22:26:08 -0500  1) #[macro_use] extern crate rocket;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  2)
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500  3) #[cfg(test)] mod tests;
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500  4)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  5) use rocket::{State, Shutdown};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  6) use rocket::fs::{relative, FileServer};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  7) use rocket::form::Form;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400  8) use rocket::response::stream::{EventStream, Event};
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500  9) use rocket::serde::{json::Json, Serialize, Deserialize};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 10) use rocket::tokio::sync::broadcast::{channel, Sender, error::RecvError};
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 11) use rocket::tokio::select;
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 12)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 13) #[derive(Debug, Clone, FromForm, Serialize, Deserialize)]
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 14) #[cfg_attr(test, derive(PartialEq, UriDisplayQuery))]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 15) #[serde(crate = "rocket::serde")]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 16) struct Message {
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 17)     #[field(validate = len(..20))]
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 18)     pub message: String
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 19) }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 20)
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 21) /// Returns an infinite stream of server-sent events. Each event is a message
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 22) /// pulled from a broadcast queue sent by the `post` handler.
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 23) #[get("/events")]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 24) async fn events(queue: &State<Sender<Message>>, mut end: Shutdown) -> EventStream![] {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 25)     let mut rx = queue.subscribe();
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 26)     EventStream! {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 27)         loop {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 28)             let msg = select! {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 29)                 msg = rx.recv() => match msg {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 30)                     Ok(msg) => msg,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 31)                     Err(RecvError::Closed) => break,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 32)                     Err(RecvError::Lagged(_)) => continue,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 33)                 },
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 34)                 _ = &mut end => break,
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 35)             };
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 36)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 37)             yield Event::json(&msg);
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 38)         }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 39)     }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 40) }
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 41)
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 42) /// Receive a message from a form submission and broadcast it to any receivers.
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 43) // #[post("/message", data = "<form>")]
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 44) #[post("/message", data = "<json_data>")]
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 45) fn post(json_data: Json<Message>, queue: &State<Sender<Message>>) {
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 46)     // A send 'fails' if there are no active subscribers. That's okay.
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 47)     let message = json_data.into_inner();
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 48)     println!("content! {:?}", message.message);
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 49)     let _res = queue.send(message);
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 50) }
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 51)
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 52) #[launch]
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 53) fn rocket() -> _ {
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 54)     rocket::build()
+5dff5c66 (Kijan Daniel 2022-11-13 20:39:20 -0500 55)         .manage(channel::<Message>(1024).0)
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 56)         .mount("/", routes![post, events])
+d8f5f1c0 (Kijan Daniel 2022-11-28 18:27:09 -0500 57)         .mount("/", FileServer::from(relative!("build")))
+ff64f471 (Kijan Daniel 2022-10-25 19:50:53 -0400 58) }
