@@ -10,19 +10,28 @@ import Settings from '../Settings';
 import { Auth0Provider } from '@auth0/auth0-react';
 import MessagingUser from './MessagingUser';
 
-var EnterInput = function(event) {
-  if (event.keyCode === 13) {
-      event.preventDefault();
-      newMessage();
-  }
-}
+// var EnterInput = function(event) {
+//   if (event.keyCode === 13) {
+//       event.preventDefault();
+//       newMessage();
+//   }
+// }
 
 var opened = false;
 
-function Navbar() {
+class Navbar extends React.Component {
   // const [sidebar, setSidebar] = useState(false);
   // const showSidebar = () => setSidebar(!sidebar);
 
+  EnterInput = (event) => {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        newMessage();
+        this.props.parentCallBack(true);
+    }
+  }
+
+  render() {
   return(
     <div className="nav-container">
       {/* <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
@@ -67,7 +76,7 @@ function Navbar() {
       </nav>
 
         {/* <button id="new-message-button">Send</button> */}
-        <textarea id="new-message-input" rows="1" cols="20" maxLength="27" onKeyDown={EnterInput} />
+        <textarea id="new-message-input" rows="1" cols="20" maxLength="27" onKeyDown={this.EnterInput} />
     
       <div onClick={newMessage} id="icon">
         <IconContext.Provider value={ {className: 'nav-newMessage-icon'} }>
@@ -76,6 +85,7 @@ function Navbar() {
       </div>
     </div>
   );
+  }
 }
 
 // Displays a tile in the sidenav for the people that the user can chat with

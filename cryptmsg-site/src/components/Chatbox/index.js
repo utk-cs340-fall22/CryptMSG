@@ -154,7 +154,8 @@ function subscribe(uri) {
         console.log("decoded data", JSON.stringify(JSON.parse(ev.data)));
         const msg = JSON.parse(ev.data);
         if (!("className" in msg) || !("id" in msg) || !("message" in msg)) return;
-        ReceiveText(msg.message)
+        ReceiveText(msg.message);
+         
       });
   
       events.addEventListener("open", () => {
@@ -192,7 +193,10 @@ class Chatbox extends Component {
     } 
 
     render() {
+        
         return (
+            
+        
             <div className='chatbox'>
                 <div>
                     <textarea id="input-box" onKeyDown={EnterInput} rows="1" cols="50" wrap="soft"/>
