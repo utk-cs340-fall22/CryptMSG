@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const UserProfile = () => {
   const { user, isLoading, isAuthenticated } = useAuth0();
+  const { username } = user;
 
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -13,7 +14,7 @@ const UserProfile = () => {
       <div id="profile-wrapper">
         <div id="text-wrapper">
           <p>Username:
-            <span>{user.nickname}</span>
+            <span>{username}</span>
           </p>
           <p>Email:
             <span>{user.email}</span>
