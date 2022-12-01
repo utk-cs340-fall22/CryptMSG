@@ -1,0 +1,25 @@
+# Product Requirements Document
+Name: Riley Crockett
+
+Product Name: CryptMSG
+
+## Background
+Many messaging apps are managed by a 3rd party, and in some cases that might not be necessary. 
+A messaging service that uses peer-to-peer connections would remove that 3rd party, and could serve as a more private alternative to most messaging apps.
+
+## Project Overview
+Our project is an encrypted messaging app where users can create chatrooms and talk to each other over
+a peer-to-peer connection.
+
+## Features
+As a user, I want my messages to only be accessed after I log in.
+As a user, I want my messages to only go to the recipients, and not a third-party.
+As a user, I want the ability to chat with other users and create chatrooms.
+As a user, I want to be able to chat with multiple users in the same chatroom.
+As a user, I want a simple interface for writing messages and swapping between conversations.
+As a user, I want my messages private and encrypted.
+As a user, I want to be able to open CryptMSG in a browser so that I can access it anywhere.
+As a user, I want to be able to check and change my settings in the app.
+
+## Technologies to be used
+Potential technologies for the frontend include HTML/CSS/JS and React.js. Netlify could be used to host the site and Auth0 could serve as a means for verifying users. Concerning the backend, Rust and Rocket could be used on the app's server side, and the libp2 library could facilitate the peer-to-peer connections.
