@@ -1,0 +1,15 @@
+.wait-to-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-background);
+  width: 100vw;
+  height: 100vh;
+  padding-top: 4vh;
+  padding-left: 8vw;
+}
+
+.wait-to-message-text {
+  color: var(--accent-color);
+  font-family: var(--msg-font);
+}
