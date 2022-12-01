@@ -1,0 +1,40 @@
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  1) import React , { Component } from 'react';
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  2) import Chatbox from '../../components/Chatbox';
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  3) import WaitToMessage from '../../components/WaitToMessage';
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  4) // import ChatSettings from '../../components/ChatSettings';
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  5) import Main from '../../components/Main';
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  6) import Navbar from '../../components/Navbar'
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  7) 
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  8) 
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  9) 
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 10) class Messaging extends Component {
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 11)   constructor() {
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 12)     super();
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 13)     this.state = {
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 14)       hasValidChatId: false
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 15)     }
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 16)   }
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 17) 
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 18)   validateChatIdCallback = (validId) =>  {
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 19)     this.setState({hasValidChatId: validId});
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 20)     console.log(this.state.hasValidChatId);
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 21)   }
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 22) 
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 23)   render() {
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 24)     return(
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 25)       <div>
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 26)         <Navbar parentCallBack={this.validateChatIdCallback}/>
+867a0f0e (Reagan Austin     2022-11-30 19:26:04 -0500 27)         {this.state.hasValidChatId ? <Main/> : <div id="empty-settings"></div>}
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 29)       </div>
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 30)     )
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 31)   }
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 32) }
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 33) 
+1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 34) export default Messaging;
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  1) import React from 'react';
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  2) import './wtm.css';
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  3) 
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  4) 
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 23) }
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 24) 
+3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 34) export default WaitToMessage;

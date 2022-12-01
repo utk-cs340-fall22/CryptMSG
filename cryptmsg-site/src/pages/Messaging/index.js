@@ -25,7 +25,7 @@ class Messaging extends Component {
       <div>
         <Navbar parentCallBack={this.validateChatIdCallback}/>
         {this.state.hasValidChatId ? <Main/> : <div id="empty-settings"></div>}
-        {this.state.hasValidChatId ? <Chatbox/> : <WaitToMessage/>}
+        {this.state.hasValidChatId ? <Chatbox/> : <WaitToMessage parentCallBack={this.validateChatIdCallback}/>}
       </div>
     )
   }
