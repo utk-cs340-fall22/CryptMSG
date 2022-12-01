@@ -7,9 +7,10 @@ const UserProfile = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
+  var name;
 
   if (user.username === NULL) {
-    var name = user.nickname;
+    name = user.nickname;
   } else {
     name = user.username;
   }
