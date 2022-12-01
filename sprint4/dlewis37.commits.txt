@@ -1,0 +1,96 @@
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  1) import React from 'react';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  2) import { StreamChat } from 'stream-chat';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  3) import { Chat, Channel, ChannelHeader, MessageInput, MessageList, Thread, Window } from 'stream-chat-react';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  4) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  5) import 'stream-chat-react/dist/css/v2/index.css';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  6) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  7) const chatClient = new StreamChat('dz5f4d5kzrue');
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  8) const userToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoic2hpbnktdW5pdC00IiwiZXhwIjoxNjY5ODUzOTg5fQ.yiSv4t8SAMwyrTdRhjvElXGBlzKmB2Z3bcpf5NjfqOA';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  9) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 10) chatClient.connectUser(
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 11)   {
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 12)     id: 'shiny-unit-4',
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 13)     name: 'shiny',
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 14)     image: 'https://getstream.io/random_png/?id=shiny-unit-4&name=shiny',
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 15)   },
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 16)   userToken,
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 17) );
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 18) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 19) const channel = chatClient.channel('messaging', 'custom_channel_id', {
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 20)   // add as many custom fields as you'd like
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 21)   image: 'https://www.drupal.org/files/project-images/react.png',
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 22)   name: 'Talk about React',
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 23)   members: ['shiny-unit-4'],
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 24) });
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 25) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 26) const App = () => (
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 27)   <Chat client={chatClient} theme='str-chat__theme-light'>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 28)     <Channel channel={channel}>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 29)       <Window>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 30)         <ChannelHeader />
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 31)         <MessageList />
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 32)         <MessageInput />
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 33)       </Window>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 34)       <Thread />
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 35)     </Channel>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 36)   </Chat>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 37) );
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 38) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 39) export default App;
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  1) {
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  2)   "name": "chat",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  3)   "version": "0.1.0",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  4)   "private": true,
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  5)   "dependencies": {
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  6)     "@testing-library/jest-dom": "^5.14.1",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  7)     "@testing-library/react": "^13.0.0",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  8)     "@testing-library/user-event": "^13.2.1",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  9)     "react": "^18.2.0",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 10)     "react-dom": "^18.2.0",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 11)     "react-scripts": "5.0.1",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 12)     "stream-chat": "^8.1.2",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 13)     "stream-chat-react": "^10.4.1",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 14)     "web-vitals": "^2.1.0"
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 15)   },
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 16)   "scripts": {
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 17)     "start": "react-scripts start",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 18)     "build": "react-scripts build",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 19)     "test": "react-scripts test",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 20)     "eject": "react-scripts eject"
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 21)   },
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 22)   "eslintConfig": {
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 23)     "extends": [
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 24)       "react-app",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 25)       "react-app/jest"
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 26)     ]
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 27)   },
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 28)   "browserslist": {
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 29)     "production": [
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 30)       ">0.2%",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 31)       "not dead",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 32)       "not op_mini all"
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 33)     ],
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 34)     "development": [
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 35)       "last 1 chrome version",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 36)       "last 1 firefox version",
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 37)       "last 1 safari version"
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 38)     ]
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 39)   }
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 40) }
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  1) import React from 'react';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  2) import ReactDOM from 'react-dom/client';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  3) import './index.css';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  4) import App from './App';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  5) import reportWebVitals from './reportWebVitals';
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  6) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  7) const root = ReactDOM.createRoot(document.getElementById('root'));
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  8) root.render(
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500  9)   <React.StrictMode>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 10)     <App />
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 11)   </React.StrictMode>
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 12) );
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 13) 
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 14) // If you want to start measuring performance in your app, pass a function
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 15) // to log results (for example: reportWebVitals(console.log))
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 16) // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+502c8270 (Dylan Lewis 2022-11-30 22:59:36 -0500 17) reportWebVitals();
