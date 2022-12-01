@@ -1,0 +1,41 @@
+Product Requirements Document
+Name: Reagan Austin
+Product Name: Cryptmsg
+
+Background:
+  Everyone is worrying more and more about security with their data,
+  and what data could be more persnal than your conversations.
+  Other people have no business snooping around what you talk about,
+  so we are setting out to create a chat server that makes sure
+  that one does.
+
+Project Overview:
+  This project will be a web application where the user will be
+  able to chat with others similar to normal chat apps. While logged in
+  the user will be able to communicate normally with who they desire 
+  as if it is any other messaging application.
+
+Features:
+  As a customer I want to be able to log in with my email and create a username
+  As a customre I want to be able to join rooms that 
+    one or more people can join as well
+  As a customer I want my data to be safe and secure through a 
+    secure messaging system
+  As a customer I want this service to be hosted on the internet and 
+    easy to access 
+  As a customer I want to be able to use this on any device as long as
+    I am logged In
+  As a customer I want to be able to have an easy and intuitive time
+    figuring 
+  As a customer I want to have an inviting and sleek design that 
+    makes me have an enjoyable time using the product
+  As a customer I want to be able to view my account details and ensure that 
+    my information is correct
+
+Technologies used
+  The technologies used will be React for the front end web application, and 
+  Rust for the backend peer to peer routing. We are using Auth0 for the user 
+  authentication, and that is linked to the front end react framework. We are
+  using Rocket for the rust messaging system and libp2p rust for the peer to
+  peer network.
+

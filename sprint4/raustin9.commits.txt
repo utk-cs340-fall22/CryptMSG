@@ -39,3 +39,173 @@
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 23) }
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 24) 
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 34) export default WaitToMessage;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  1) .wait-to-message-container {
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  2)   display: flex;
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500  3)   flex-direction: column;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  4)   justify-content: center;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  5)   align-items: center;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  6)   background-color: var(--main-background);
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  7)   width: 100vw;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  8)   height: 100vh;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  9)   padding-top: 4vh;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 10)   padding-left: 8vw;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 11) }
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 12) 
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 13) .wait-to-message-text {
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 14)   color: var(--accent-color);
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 15)   font-family: var(--msg-font);
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 16) }
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 17) 
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 18) #wait-to-message-input {
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 19)   font-family: var(--msg-font);
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 20)   font-size: 1.3rem;
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 21)   border-radius: 12px;
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 22)   color: var(--accent-color);
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 23)   border: 2px solid var(--accent-color);
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 24)   resize: none;
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 25)   padding: 10px;
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 26) }
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  1) import React from 'react';
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  2) import './wtm.css';
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  3) 
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  4) 
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500  5) class WaitToMessage extends React.Component {
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500  6)   handleInput = (event) => {
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500  7)     if (event.keyCode === 13) {
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500  8)       event.preventDefault();
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500  9)       this.props.parentCallBack(true);
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 10)       let hash = document.getElementById("wait-to-message-input").value;
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 11)       if (hash !== "") document.getElementById("nav-message-hash").innerHTML = hash;
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 12)     }
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 13)   }
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 14) 
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 15)   render() {
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 16)     return(
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 17)       <div className="wait-to-message-container">
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 18)         <h1 className="wait-to-message-text">Please enter chatroom id:</h1>
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 19)         <textarea id="wait-to-message-input" rows="1" cols="20" maxLength="27" onKeyDown={this.handleInput}/>
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 20)       </div>
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 21)     )
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 22)   }
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 23) }
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 24) 
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 25) // function WaitToMessage() {
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 26) //   return(
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 27) //     <div className="wait-to-message-container">
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 28) //       <h1 className="wait-to-message-text">Please enter chatroom id:</h1>
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 29) //       <textarea id="wait-to-message-input" rows="1" cols="20" onKeyDown={handleInput}/>
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 30) //     </div>
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 31) //   )
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 32) // }
+9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 33) 
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 34) export default WaitToMessage;
+0696147c (Reagan Austin 2022-10-27 18:42:42 -0400   1) import React /*, { useState } */ from 'react';
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   4) import * as FiIcons from 'react-icons/fi'
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   7) import { IconContext } from 'react-icons/lib'
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400   8) import './navbar.css';
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  13) // var EnterInput = function(event) {
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  14) //   if (event.keyCode === 13) {
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  15) //       event.preventDefault();
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  16) //       newMessage();
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  17) //   }
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  18) // }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  21) 
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  22) class Navbar extends React.Component {
+0696147c (Reagan Austin 2022-10-27 18:42:42 -0400  23)   // const [sidebar, setSidebar] = useState(false);
+0696147c (Reagan Austin 2022-10-27 18:42:42 -0400  24)   // const showSidebar = () => setSidebar(!sidebar);
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  26)   EnterInput = (event) => {
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  27)     if (event.keyCode === 13) {
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  28)         event.preventDefault();
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  29)         newMessage();
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  30)         this.props.parentCallBack(true);
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  31)     }
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  32)   }
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  33) 
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  34)   render() {
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  35)   return(
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  36)     <div className="nav-container">
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  37)       {/* <IconContext.Provider value={ {className: 'nav-bars-icon'} }>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  38)         <FaIcons.FaBars onClick={showSidebar}/>
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  39)       </IconContext.Provider> */}
+1259137c (Reagan Austin 2022-11-01 01:32:28 -0400  41)         <h1 className="nav-title">CryptMSG</h1>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  43) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  44)       {/* Side navbar */}
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  45)       {/* <nav className={sidebar ? 'nav-sidebar active' : 'nav-sidebar'}> */}
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  46)       <nav className="nav-sidebar active">
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  47)         <div className="nav-sidenav-icon-container">
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  48)           {/* <IconContext.Provider value={ {className: 'nav-close-icon'} }>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  49)             <IoIcons.IoMdClose onClick={showSidebar}/>
+826eb0f5 (Reagan Austin 2022-10-27 18:41:11 -0400  50)           </IconContext.Provider> */}
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  51)         </div>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  53)         <ProfileSelector userName="Profile 2" />
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  54)         <ProfileSelector userName="Profile 3" />
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  55)         <ProfileSelector userName="Profile 4" />
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  71)           <IconContext.Provider value={ {className: 'nav-settings-icon'} }>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  72)             <FiIcons.FiSettings />
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  73)           </IconContext.Provider>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  74)           Settings
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  75)         </div>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  76)       </nav>
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  79)         <textarea id="new-message-input" rows="1" cols="20" maxLength="27" onKeyDown={this.EnterInput} />
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  86)     </div>
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  87)   );
+3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  88)   }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  89) }
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  90) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400  91) // Displays a tile in the sidenav for the people that the user can chat with
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 102) 
+6c22f1f6 (Reagan Austin 2022-10-25 18:32:05 -0400 146) export default Navbar;
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400   2) import { Component } from 'react'
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-17 21:30:19 -0400   4) import * as FaIcons from 'react-icons/fa'
+b977a0b3 cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-17 21:30:19 -0400   5) import { IconContext } from 'react-icons/lib'
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400   6) import autosize from 'autosize';
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  10) // import Message from '../Message'
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400  11) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  32) // Activates when message is hovered over
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  33) function MessageHover() {
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  34)     console.log(this.dataTime);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  35) }
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  36) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  58)     // Create message date
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  59)     var date = new Date();
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  60)     let time = `${date.getHours()}:${date.getMinutes()}`;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  61)     let test = `${time}`;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  62) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  63)     // Create HTML elements
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  64)     var container = document.createElement("div");
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  71)     var msgTime = document.createElement("h1");
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  73) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  77)     container.className = type;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  79)     msg.dataTime = test;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  80)     msg.addEventListener('mouseover', MessageHover);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  81)     msgTime.innerHTML = test;
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  82)     msgTime.className = "msg-time";
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  83) 
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  84)     container.appendChild(msg);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  85)     container.appendChild(msgTime);
+cf711369 cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-10-30 23:35:58 -0400  86)     msg_board.prepend(container);
+3a1dc65f cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-11-29 21:31:04 -0500 157)         ReceiveText(msg.message);
+3a1dc65f cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-11-29 21:31:04 -0500 158)          
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 181) class Chatbox extends Component {   
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 182)     componentDidMount(){
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 183)         // This causes the text area to autoresize when needing more or less lines of input
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 184)         const tarea = document.getElementById("input-box");
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 185)         autosize(tarea);
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 193)     } 
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 194) 
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 195)     render() {
+3a1dc65f cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-11-29 21:31:04 -0500 196)         
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 197)         return (
+3a1dc65f cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-11-29 21:31:04 -0500 198)             
+3a1dc65f cryptmsg-site/src/components/Chatbox/index.js (Reagan Austin  2022-11-29 21:31:04 -0500 199)         
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 200)             <div className='chatbox'>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 201)                 <div>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 202)                     <textarea id="input-box" onKeyDown={EnterInput} rows="1" cols="50" wrap="soft"/>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 203)                     <IconContext.Provider value={{ className: 'input-submit-icon' }}>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 204)                         <button id="input-submit" onClick={SendText}>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 205)                             <FaIcons.FaPaperPlane />
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 206)                         </button>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 207)                     </IconContext.Provider>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 208)                 </div>
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 210)         );
+315db07e cryptmsg-site/src/Pages/Chatbox.js            (Reagan Austin  2022-10-18 17:11:57 -0400 211)     } 
