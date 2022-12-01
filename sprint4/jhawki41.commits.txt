@@ -1,0 +1,343 @@
+Navbar/index.js
+
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   2) import * as ReactDOM from 'react-dom/client';
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400   9) import Settings from '../Settings';
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  70)         <div className="nav-settings" onClick={displaySettings}>
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 103) function displaySettings () {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 104)   let settings = <Settings />
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 105)   const root = ReactDOM.createRoot(document.getElementById("empty-settings"));
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 106)   root.render(settings);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 107) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 108)   document.getElementsByClassName("chatbox")[0].style.display = "none";
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 109)   document.getElementById("message-board").style.display = "none";
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 110) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 111) 
+9b4b7cfa (Jacob Hawkins 2022-11-15 08:32:41 -0500   3) // import { Link } from 'react-router-dom';
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500   5) // import * as BiIcons from 'react-icons/bi'
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500   6) import * as FaIcons from 'react-icons/fa'
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  10) import { Auth0Provider } from '@auth0/auth0-react';
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  11) import MessagingUser from './MessagingUser';
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  12) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  19) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  20) var opened = false;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  25) 
+f2669f6e (Jacob Hawkins 2022-11-15 08:31:58 -0500  40)       {/* <Link to="/home" className="nav-title"> */}
+f2669f6e (Jacob Hawkins 2022-11-15 08:31:58 -0500  42)       {/* </Link> */}
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  52)         {/* <ProfileSelector userName="Profile 1" />
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  56)         <ProfileSelector userName="Profile 5" /> */}
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  57)         <p id="nav-message-title">Chatroom ID:</p>
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  58)         <p id="nav-message-hash"></p>
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  59)         <div id="nav-user">
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  60)           <Auth0Provider
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  61)             domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  62)             clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
+880c8c32 (Jacob Hawkins 2022-11-28 19:17:58 -0500  63)             redirectUri = {"https://cryptmsg.net/messages"}
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  64)           >
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  65)             <MessagingUser />
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  66)           </Auth0Provider>
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500  67)         </div>
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  68) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  69) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  77) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  78)         {/* <button id="new-message-button">Send</button> */}
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  80)     
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  81)       <div onClick={newMessage} id="icon">
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  82)         <IconContext.Provider value={ {className: 'nav-newMessage-icon'} }>
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  83)           <FaIcons.FaPenNib />
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  84)         </IconContext.Provider>
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  85)       </div>
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  92) // function ProfileSelector(props) {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  93) //   return(
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  94) //     <div className="nav-profile-option">
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  95) //       <IconContext.Provider value={ {className: 'nav-sidebar-icon'} }>
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  96) //         <BiIcons.BiPencil />
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  97) //       </IconContext.Provider>
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  98) //       {props.userName}
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  99) //     </div>
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 100) //   )
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 101) // }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 112) var hash;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 113) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 114) function newMessage () {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 115)   let newChatBox = document.getElementById("new-message-input");
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 116)   let newChatIcon = document.getElementsByClassName("nav-newMessage-icon")[0].style;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 117)   
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 118)   if (opened === false) {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 119)     newChatBox.style.visibility = "visible";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 120)     newChatBox.style.width = "255px";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 121)     newChatBox.style.transitionDuration = "1s";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 122)     newChatIcon.border = "1px solid var(--accent-color)";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 123)     newChatIcon.borderRadius = "10px";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 124)     newChatIcon.padding = "4px";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 125) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 126)     opened = true;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 127)   } else {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 128)     submitHash(newChatBox);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 129)     
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 130)     newChatBox.style.visibility = "hidden";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 131)     newChatBox.style.width = "0px";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 132)     newChatBox.style.transitionDuration = "0.2s";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 133)     newChatIcon.padding = "5px";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 134)     newChatIcon.border = "none";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 135)     opened = false;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 136)   }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 137) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 138) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 139) function submitHash(newChatBox) {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 140)   hash = newChatBox.value;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 141)   console.log(hash);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 142)   newChatBox.value = "";
+0f78b447 (Jacob Hawkins 2022-11-22 09:45:59 -0500 143)   if (hash !== "") document.getElementById("nav-message-hash").innerHTML = hash;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 144) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 145) 
+
+Navbar/navbar.css
+
+2a8a1e43 (jacob-hawkins 2022-11-07 22:36:55 -0500  22)   background-color: transparent;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  65)   /* transition: 500ms ease; */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  77)   /* transition: 150ms ease; */
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400  98)   height: 8%;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 105) .nav-settings:hover {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 106)     background-color: var(--settings-hover);
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 107)     cursor: pointer;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 108) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 109) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 110) .nav-settings:hover .nav-settings-icon {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 111)     animation-name: rotate;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 112)     animation-duration: 3500ms;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 113)     animation-iteration-count: infinite;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 114)     animation-timing-function: linear;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 115) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 116) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 120)   font-size: 1.75rem;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 122)   left: 25px;
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 123) }
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 124) 
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 195) @keyframes rotate {
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 196)     0% {transform: rotate(0deg);}
+59c9c645 (jacob-hawkins 2022-11-04 18:41:16 -0400 197)     100% {transform: rotate(360deg);}
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  60)   align-items: center;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  61)   gap: 15px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 125) #nav-message-title {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 126)   color: var(--light-text-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 127)   font-size: 1.5vw;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 128)   padding-left: 10px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 129) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 130) 
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 131) #nav-message-hash {
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 132)   color: var(--light-text-color);
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 133)   font-size: 1.5vw;
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 134)   padding-left: 10px;
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 135) }
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 136) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 137) #nav-username {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 138)   color: var(--light-text-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 139)   font-size: 1.5vw;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 140)   padding-left: 10px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 141) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 142) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 143) #nav-img {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 144)   vertical-align: middle;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 145)   width: 4vw;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 146)   height: 4vw;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 147)   border-radius: 100%;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 148) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 149) 
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 150) #nav-user {
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 151)   position: fixed;
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 152)   bottom: 80px;
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 153) }
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 154) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 155) .nav-newMessage-icon {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 156)   fill: var(--accent-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 157)   background: transparent;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 158)   font-size: 2.4rem;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 159)   margin-top: 6.5px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 160)   margin-right: 20px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 161)   padding: 5px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 162)   cursor: pointer;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 163) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 164) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 165) .nav-newMessage-icon:hover {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 166)   /* fill: var(--light-text-color); */
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 167)   background-color: var(--accent-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 168)   fill: var(--light-gray);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 169)   border-radius: 10px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 170) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 171) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 172) #new-message-input {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 173)   color: var(--light-text-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 174)   border: 1px solid var(--accent-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 175)   border-radius: 5px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 176)   padding: 10px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 177)   font-size: 20px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 178)   font-family: var(--msg-font);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 179)   margin-right: 15px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 180)   resize: none;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 181)   visibility: hidden;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 182)   width: 0;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 183)   
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 184)   transition-duration: 1s;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 185)   transition-timing-function: ease;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 186) }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 187) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 188) /* #new-message-button {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 189)   color: var(--accent-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 190)   border: 1px solid var(--accent-color);
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 191)   padding: 5px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 192)   margin-right: 15px;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 193) } */
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 194) 
+
+Navbar/MessagingUser.js
+
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  1) import React from "react";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  2) import { useAuth0 } from "@auth0/auth0-react";
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  3) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  4) const MessagingUser = () => {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  5)   const { user, isLoading, isAuthenticated } = useAuth0();
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  6) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  7)   if (isLoading) {
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  8)     return <div id="nav-username">Loading ...</div>;
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500  9)   }
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 10) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 11)   return (
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 12)     isAuthenticated && (
+8b67607f (Jacob Hawkins 2022-11-22 09:43:26 -0500 13)       <img src={user.picture} alt="" id="nav-img" />
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 14)     )
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 15)   );
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 16) };
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 17) 
+f4ce1d6e (Jacob Hawkins 2022-11-22 08:27:20 -0500 18) export default MessagingUser;
+
+Settings/settings.css
+
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   1) #settings {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   2)     /* background-color: lightblue; */
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   3)     width: 100%;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   4)     height: 100%;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   5)     position: absolute;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   6)     margin-top: 10vh;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   7)     left: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   8)     font-size: 3vw;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400   9)     font-family: var(--msg-font);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  10)     color: var(--light-text-color);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  11) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  12) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  13) #settings-flex {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  14)     display: flex;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  15)     align-items: center;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  16)     flex-direction: column;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  17) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  18) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  19) #settings h1 {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  20)     font-family: var(--title-font);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  21)     color: var(--accent-color);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  22) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  23) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  52) #logout-button {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  53)     font-size: 2vw;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  54)     border: 3px solid red;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  55)     background-color: var(--main-background);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  56)     color: red;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  57)     border-radius: 50px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  58)     padding: 15px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  59)     margin-top: 20vh;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  60) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  61) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  62) #logout-button:hover {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  63)     background-color: red;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  64)     color: var(--main-background);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  65)     cursor: pointer;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  66) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  67) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  68) #close-settings {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  69)     align-items: right;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  71)     text-align: right;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  72)     padding-right: 2vw;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  73)     font-size: 2vw;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  74) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  75) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  76) #close-settings:hover {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  77)     color: red;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  78)     cursor: pointer;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  79) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  80) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  81) #darkmode-flex {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  82)     display: flex;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  83)     flex-direction: row;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  84)     align-items: center;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  85)     gap: 10px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  86) }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  87) 
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  88) /* Slider from W3 schools */
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  89) /* The switch - the box around the slider */
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  90) .switch {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  91)     position: relative;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  92)     display: inline-block;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  93)     width: 60px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  94)     height: 34px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  95)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  96)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  97)   /* Hide default HTML checkbox */
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  98)   .switch input {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400  99)     opacity: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 100)     width: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 101)     height: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 102)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 103)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 104)   /* The slider */
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 105)   .slider {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 106)     position: absolute;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 107)     cursor: pointer;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 108)     top: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 109)     left: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 110)     right: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 111)     bottom: 0;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 112)     background-color: #ccc;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 113)     -webkit-transition: .4s;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 114)     transition: .4s;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 115)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 116)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 117)   .slider:before {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 118)     position: absolute;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 119)     content: "";
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 120)     height: 26px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 121)     width: 26px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 122)     left: 4px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 123)     bottom: 4px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 124)     background-color: var(--slider-color);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 125)     -webkit-transition: .4s;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 126)     transition: .4s;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 127)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 128)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 129)   input:checked + .slider {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 130)     background-color: var(--accent-color);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 131)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 132)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 133)   input:focus + .slider {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 134)     box-shadow: 0 0 1px var(--accent-color);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 135)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 136)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 137)   input:checked + .slider:before {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 138)     -webkit-transform: translateX(26px);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 139)     -ms-transform: translateX(26px);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 140)     transform: translateX(26px);
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 141)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 142)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 143)   /* Rounded sliders */
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 144)   .slider.round {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 145)     border-radius: 34px;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 146)   }
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 147)   
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 148)   .slider.round:before {
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 149)     border-radius: 50%;
+59c9c645 (jacob-hawkins  2022-11-04 18:41:16 -0400 150)   }
+aa3ede68 (Jacob Hawkins  2022-11-30 20:15:16 -0500  70)     margin-bottom: 8vh;
+
+netlify.toml
+
+31d63fa0 cryptmsg-site/public/netlify.toml (Jacob Hawkins 2022-11-27 17:31:00 -0500 1) [[redirects]]
+403e61a7 cryptmsg-site/netlify.toml        (Jacob Hawkins 2022-11-28 18:08:15 -0500 2)   from = "/*"
+f61c5987 cryptmsg-site/netlify.toml        (Jacob Hawkins 2022-11-28 18:22:15 -0500 3)   to = "/index.html"
+31d63fa0 cryptmsg-site/public/netlify.toml (Jacob Hawkins 2022-11-27 17:31:00 -0500 4)   status = 200
