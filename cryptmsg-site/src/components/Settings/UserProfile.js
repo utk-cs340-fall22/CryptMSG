@@ -8,12 +8,18 @@ const UserProfile = () => {
     return <div>Loading ...</div>;
   }
 
+  if (user.username === NULL) {
+    var name = user.nickname;
+  } else {
+    name = user.username;
+  }
+
   return (
     isAuthenticated && (
       <div id="profile-wrapper">
         <div id="text-wrapper">
           <p>Username:
-            <span>{user.user_id}</span>
+            <span>{name}</span>
           </p>
           <p>Email:
             <span>{user.email}</span>
