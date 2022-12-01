@@ -5,6 +5,7 @@ import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 
 function OpenSidebar(name) {
+    console.log("open");
     var sidebar = document.getElementById(`${name}-sidebar`);
     document.getElementById(`${name}-openbtn`).style.display = "none";
     document.getElementById(`${name}-closebtn`).style.display = "block";

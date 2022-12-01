@@ -5,7 +5,6 @@
   background-color: var(--main-background);
   width: 100vw;
   height: 100vh;
-  z-index: 10;
   padding-top: 4vh;
   padding-left: 8vw;
 }
