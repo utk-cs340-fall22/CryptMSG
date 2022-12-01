@@ -13,7 +13,7 @@ const UserProfile = () => {
       <div id="profile-wrapper">
         <div id="text-wrapper">
           <p>Username:
-            <span>{user.preferred_username}</span>
+            <span>{user.user_id}</span>
           </p>
           <p>Email:
             <span>{user.email}</span>
