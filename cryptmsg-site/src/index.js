@@ -12,7 +12,7 @@ root.render(
     <Auth0Provider
       domain = "dev-px7bcvvev6wa7dfa.us.auth0.com"
       clientId = "BaEPsOUj2QzvJKjPKst09hRrmvPe7flf"
-      redirectUri = {"https://cryptmsg.net/messages"}
+      redirectUri = {"http://127.0.0.1:8000/messages"}
     >
       <App />
     </Auth0Provider>
