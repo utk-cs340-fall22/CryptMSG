@@ -1,0 +1,26 @@
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  37) const isValidUrl = urlString=> {
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  38)     var urlPattern = new RegExp('^(https?:\\/\\/)?'+
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  39)     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  40)     '((\\d{1,3}\\.){3}\\d{1,3}))'+
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  41)     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  42)     '(\\?[;&a-z\\d%_.~+=-]*)?'+
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  43)     '(\\#[-a-z\\d_]*)?$','i');
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  44)     return !!urlPattern.test(urlString);
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  45) }
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  46)
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  47) function CreateLink(value) {
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  48)     var msg = document.createElement("a");
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  49)     var link = document.createTextNode(`${value}`);
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  50)     msg.appendChild(link);
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  51)     msg.href = `${value}`;
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  52)     msg.target = "_blank";
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  53)     msg.rel = "noopener noreferrer";
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  54)     return msg;
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  55) }
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  56)
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  65)     var msg;
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  66)     if (isValidUrl(value)) {
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  67)         msg = CreateLink(value);
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  68)     } else {
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  69)         msg = document.createElement("div");
+eb362f6c cryptmsg-site/src/components/Chatbox/index.js (Riley Crockett 2022-11-28 15:24:04 -0500  70)     }
