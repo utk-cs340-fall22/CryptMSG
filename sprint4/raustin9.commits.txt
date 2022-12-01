@@ -6,6 +6,7 @@
 1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  6) import Navbar from '../../components/Navbar'
 1259137c (Reagan Austin     2022-11-01 01:32:28 -0400  7) 
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  8) 
+
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500  9) 
 1259137c (Reagan Austin     2022-11-01 01:32:28 -0400 10) class Messaging extends Component {
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 11)   constructor() {
@@ -38,29 +39,3 @@
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 23) }
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 24) 
 3a1dc65f (Reagan Austin     2022-11-29 21:31:04 -0500 34) export default WaitToMessage;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  1) .wait-to-message-container {
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  2)   display: flex;
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500  3)   flex-direction: column;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  4)   justify-content: center;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  5)   align-items: center;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  6)   background-color: var(--main-background);
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  7)   width: 100vw;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  8)   height: 100vh;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500  9)   padding-top: 4vh;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 10)   padding-left: 8vw;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 11) }
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 12) 
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 13) .wait-to-message-text {
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 14)   color: var(--accent-color);
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 15)   font-family: var(--msg-font);
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 16) }
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 17) 
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 18) #wait-to-message-input {
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 19)   font-family: var(--msg-font);
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 20)   font-size: 1.3rem;
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 21)   border-radius: 12px;
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 22)   color: var(--accent-color);
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 23)   border: 2px solid var(--accent-color);
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 24)   resize: none;
-9eaf127f (Reagan Austin 2022-11-30 20:13:30 -0500 25)   padding: 10px;
-3a1dc65f (Reagan Austin 2022-11-29 21:31:04 -0500 26) }
