@@ -70,7 +70,7 @@ function AddMessage(msg_board, type, value) {
     }
     var msgTime = document.createElement("h1");
     // var msg = document.createElement("div");
-
+    var username = document.getElementById("nav-message-hash").innerHTML;
     msg.className = "messages";
     msg.id = type;
     msg.message = value;
@@ -96,30 +96,20 @@ function AddMessage(msg_board, type, value) {
 
 function SendText() {
     var input_box = document.getElementById("input-box");
+    var username = document.getElementById("nav-message-hash").innerHTML;
     var msg_board = document.getElementById("message-board");
     if (input_box.value.length === 0) { return; }
-    // var holder1 = input_box.value;
-    // var message = new URLSearchParams({ holder1 });
     AddMessage(msg_board, "sent", input_box.value);
-    // console.log(message)
-    // axios
-    //     .post("/message",  message)
-    //     .then(response => {
-    //         console.log(response)
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
-//     let response = fetch("/message", {
-//         method: "POST",
-//         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-//         // body: '{"content": "This is a test"}'
-//         body: `{"message":` + JSON.stringify(input_box.value) + `}`
-//         // body: new URLSearchParams({ holder }),
-//       }).then((response) => {
-//         console.log("response", response)
-// //        if (response.ok) messageField.value = "";
-//       });
+    let response = fetch("/message", {
+         method: "POST",
+         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+         // body: '{"content": "This is a test"}'
+         body: `{"message":` + JSON.stringify((input_box.value + username)) + `}`
+         // body: new URLSearchParams({ holder }),
+      }).then((response) => {
+         console.log("response", response)
+        //if (response.ok) messageField.value = "";
+       });
     
     input_box.value = "";
     input_box.innerHTML = "";
@@ -153,8 +143,14 @@ function subscribe(uri) {
         console.log("raw data", JSON.stringify(ev.data));
         console.log("decoded data", JSON.stringify(JSON.parse(ev.data)));
         const msg = JSON.parse(ev.data);
-        if (!("className" in msg) || !("id" in msg) || !("message" in msg)) return;
-        ReceiveText(msg.message);
+        
+        var username = document.getElementById("nav-message-hash").innerHTML;
+        var checkUsename = msg.message.substring(msg.message.length - username.length);
+        console.log(checkUsename);
+        if(checkUsename != username) {
+            ReceiveText(msg.message.substring(0,msg.message.length - username.length));
+        }
+        
          
       });
   
