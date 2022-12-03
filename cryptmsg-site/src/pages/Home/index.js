@@ -2,9 +2,6 @@ import React , { Component } from 'react';
 import './home.css';
 import LoginButton from './login';
 
-// import { Link } from 'react-router-dom';
-// <Link to="/messages" className="home-link">Welcome</Link>
-
 class Home extends Component {
   render() {
     return(
