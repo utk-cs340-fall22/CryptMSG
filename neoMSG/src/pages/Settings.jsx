@@ -29,19 +29,21 @@ function lightmode() {
   checked = checkBox.checked;
   
   if (checked === true) {
-    r.style.setProperty('--main-background', "#f6f6f6");
+    r.style.setProperty('--background-color', "#f6f6f6");
     r.style.setProperty('--light-text-color', "black");
     r.style.setProperty('--accent-color', "#0099ff");
     r.style.setProperty('--light-gray', "#e7e7e7");
     r.style.setProperty('--lighter-gray', "#dedede");
     r.style.setProperty('--settings-hover', "#cccccc");
+    r.style.setProperty('--chat-preview-gray', "#181818");
   } else {
-    r.style.setProperty('--main-background', "#111111");
+    r.style.setProperty('--background-color', "#111111");
     r.style.setProperty('--light-text-color', "#f6f6f6");
     r.style.setProperty('--accent-color', "#ffcb74");
     r.style.setProperty('--light-gray', "#181818");
     r.style.setProperty('--lighter-gray', "#212121");
     r.style.setProperty('--settings-hover', "#333333");
+    r.style.setProperty('--chat-preview-gray', "lightgray");
   } 
 }
 

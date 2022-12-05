@@ -1,16 +1,19 @@
-$background-color: #111111;
-$light-gray: #181818;
-$lighter-gray: #272727;
-$lightest-gray: #4A4A4A;
-$accent-color: #ffcb74;
-$dark-accent: #E5B666;
-$receive-color: #2f2f2f;
-$light-text-color: #f6f6f6;
-$chat-settings-color: #c2c2c2;
-$slider-color: white;
-$settings-hover: #333333;
-$main-font: 'Nunito';
-$title-font: 'Fugaz One';
+:root {
+  --background-color: #111111;
+  --light-gray: #181818;
+  --lighter-gray: #272727;
+  --lightest-gray: #4A4A4A;
+  --accent-color: #ffcb74;
+  --dark-accent: #E5B666;
+  --receive-color: #2f2f2f;
+  --light-text-color: #f6f6f6;
+  --chat-preview-gray: lightgray;
+  --chat-settings-color: #c2c2c2;
+  --slider-color: white;
+  --settings-hover: #333333;
+  --main-font: 'Nunito';
+  --title-font: 'Fugaz One';
+}
 
 @mixin mobile {
   @media screen and (max-width: 480px) {
@@ -30,14 +33,14 @@ $title-font: 'Fugaz One';
 
 
 .formContainer {
-  background-color: $background-color;
+  background-color: var(--background-color);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .formWrapper {
-    background-color: $accent-color;
+    background-color: var(--accent-color);
     padding: 20px;
     border-radius: 12px;
     display: flex;
@@ -46,11 +49,11 @@ $title-font: 'Fugaz One';
     gap: 10px;
 
     .logo {
-      font-family: $title-font;
+      font-family: var(--title-font);
       font-size: 1.3rem;
     }
     .title {
-      font-family: $main-font;
+      font-family: var(--main-font);
     }
     form {
       display: flex;
@@ -58,10 +61,10 @@ $title-font: 'Fugaz One';
       gap: 15px;
 
       input {
-        font-family: $main-font;
+        font-family: var(--main-font);
         padding: 12px;
         border: none;
-        border-bottom: 1px solid $light-gray;
+        border-bottom: 1px solid var(--light-gray);
         width: 14vw;
       }
       &::placeholder {
@@ -69,14 +72,14 @@ $title-font: 'Fugaz One';
       }
 
       label {
-        font-family: $main-font;
+        font-family: var(--main-font);
         cursor: pointer;
       }
 
       button {
-        font-family: $main-font;
-        background-color: $light-gray;
-        color: $accent-color;
+        font-family: var(--main-font);
+        background-color: var(--light-gray);
+        color: var(--accent-color);
         border-radius: 6px;
         padding: 8px;
         cursor: pointer;
@@ -84,7 +87,7 @@ $title-font: 'Fugaz One';
     }
 
     p {
-      font-family: $main-font;
+      font-family: var(--main-font);
       font-size: 12px;
       margin-top: 10px;
     }
@@ -94,21 +97,21 @@ $title-font: 'Fugaz One';
 .settings {
   width: 100vw;
   height: 100vh;
-  background-color: $background-color;
+  background-color: var(--background-color);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
   h1 {
-    font-family: $main-font;
+    font-family: var(--main-font);
     margin-bottom: 15px;
-    color: $accent-color;
+    color: var(--accent-color);
     font-size: 30px;
   }
 
   .settings-container {
-    background-color: $lighter-gray;
+    background-color: var(--lighter-gray);
     height: 80%;
     width: 80%;
     border-radius: 20px;
@@ -123,7 +126,7 @@ $title-font: 'Fugaz One';
 
     p {
       font-size: 35px;
-      color: $light-text-color;
+      color: var(--light-text-color);
     }
 
     p > span {
@@ -139,7 +142,7 @@ $title-font: 'Fugaz One';
       font-size: 2vw;
       text-decoration: none;
       float: right;
-      color: $light-text-color;
+      color: var(--light-text-color);
     }
 
     #close-settings:hover {
@@ -155,9 +158,9 @@ $title-font: 'Fugaz One';
     }
 
     #logout-button {
-      background-color: $lighter-gray;
-      color: $accent-color;
-      border: 1px solid $accent-color;
+      background-color: var(--lighter-gray);
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
       padding: 10px;
       border-radius: 50px;
       font-size: 25px;
@@ -165,8 +168,8 @@ $title-font: 'Fugaz One';
     }
 
     #logout-button:hover {
-      background-color: $accent-color;
-      color: $lighter-gray;
+      background-color: var(--accent-color);
+      color: var(--lighter-gray);
     }
 
     /* Slider from W3 schools */
@@ -205,17 +208,17 @@ $title-font: 'Fugaz One';
       width: 26px;
       left: 4px;
       bottom: 4px;
-      background-color: $slider-color;
+      background-color: var(--slider-color);
       -webkit-transition: .4s;
       transition: .4s;
     }
     
     input:checked + .slider {
-      background-color: $accent-color;
+      background-color: var(--accent-color);
     }
     
     input:focus + .slider {
-      box-shadow: 0 0 1px $accent-color;
+      box-shadow: 0 0 1px var(--accent-color);
     }
     
     input:checked + .slider:before {
@@ -236,7 +239,7 @@ $title-font: 'Fugaz One';
 }
 
 .home {
-  background-color: $background-color;
+  background-color: var(--background-color);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -262,21 +265,21 @@ $title-font: 'Fugaz One';
 
     .sidebar {
       flex: 1;
-      background-color: $light-gray;
+      background-color: var(--light-gray);
 
       .navbar {
         display: flex;
         align-items: center;
-        color: $background-color;
-        background-color: $accent-color;
+        color: var(--background-color);
+        background-color: var(--accent-color);
         height: 50px;
         padding: 10px;
         gap: 15px;
         justify-content: space-between;
 
         .logo {
-          font-family: $title-font;
-          color: $light-gray;
+          font-family: var(--title-font);
+          color: var(--light-gray);
           // font-weight: bold;
           font-size: 25px;
           @include tablet{
@@ -290,7 +293,7 @@ $title-font: 'Fugaz One';
           gap: 10px;
 
           span {
-            font-family: $main-font;
+            font-family: var(--main-font);
             font-size: 21px;
           }
 
@@ -303,10 +306,10 @@ $title-font: 'Fugaz One';
           }
 
           button {
-            background-color: $lighter-gray;
+            background-color: var(--lighter-gray);
             color: #ddddf7;
             border-radius: 5px;
-            color: $accent-color;
+            color: var(--accent-color);
             font-size: 15px;
             border: none;
             padding: 8px;
@@ -318,7 +321,7 @@ $title-font: 'Fugaz One';
             }
           }
           button:hover {
-            background-color: $lightest-gray;
+            background-color: var(--lightest-gray);
             transition: 200ms ease;
           }
         }
@@ -332,7 +335,7 @@ $title-font: 'Fugaz One';
           input {
             background-color: transparent;
             border: none;
-            color: $accent-color;
+            color: var(--accent-color);
             outline: none;
             width: 90%;
           }
@@ -345,11 +348,11 @@ $title-font: 'Fugaz One';
       display: flex;
       align-items: center;
       gap: 10px;
-      color: white;
+      color: var(--light-text-color);
       cursor: pointer;
 
       &:hover {
-        background-color: $lightest-gray;
+        background-color: var(--lightest-gray);
       }
 
       img {
@@ -366,7 +369,7 @@ $title-font: 'Fugaz One';
         }
         p {
           font-size: 14px;
-          color: lightgray;
+          color: var(--chat-preview-gray);
         }
       }
     }
@@ -376,12 +379,12 @@ $title-font: 'Fugaz One';
 
       .chatInfo {
         height: 50px;
-        background-color: $accent-color;
+        background-color: var(--accent-color);
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 10px;
-        color: $lighter-gray;
+        color: var(--lighter-gray);
         font-size: 23px;
 
         .settings-link {
@@ -389,7 +392,7 @@ $title-font: 'Fugaz One';
           align-items: center;
           justify-content: center;
           text-decoration: none;
-          color: $lighter-gray;
+          color: var(--lighter-gray);
           font-size: 29px;
           position: absolute;
           right: 25px;
@@ -450,8 +453,8 @@ $title-font: 'Fugaz One';
             gap: 10px;
 
             p {
-              background-color: $receive-color;
-              color: $accent-color;
+              background-color: var(--receive-color);
+              color: var(--accent-color);
               padding: 10px 20px;
               border-radius: 0px 10px 10px 10px;
               max-width: max-content;
@@ -468,8 +471,8 @@ $title-font: 'Fugaz One';
             .messageContent {
               align-items: flex-end;
               p {
-                background-color: $accent-color;
-                color: $light-gray;
+                background-color: var(--accent-color);
+                color: var(--light-gray);
                 border-radius: 10px 0px 10px 10px;
               }
             }
@@ -490,8 +493,8 @@ $title-font: 'Fugaz One';
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: $lighter-gray;
-        border: 1px solid $accent-color;
+        background-color: var(--lighter-gray);
+        border: 1px solid var(--accent-color);
         border-radius: 50px;
         transform: translateY(-15px);
 
@@ -499,18 +502,18 @@ $title-font: 'Fugaz One';
           width: 100%;
           border: none;
           outline: none;
-          color: $accent-color;
+          color: var(--accent-color);
           font-size: 18px;
-          background-color: $lighter-gray;
+          background-color: var(--lighter-gray);
 
           &::placeholder {
-            color: $lightest-gray;
+            color: var(--lightest-gray);
           }
         }
 
         .attach-file-input {
           margin: 3px;
-          color: $accent-color;
+          color: var(--accent-color);
           font-size: 23px;
           transition: 200ms ease;
           cursor: pointer;
@@ -538,7 +541,7 @@ $title-font: 'Fugaz One';
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 1.5px solid $accent-color;
+            border: 1.5px solid var(--accent-color);
             color: white;
             cursor: pointer;
             background-color: transparent;
@@ -546,16 +549,16 @@ $title-font: 'Fugaz One';
 
           .chat-send-input {
             font-size: 20px;
-            color: $accent-color;
+            color: var(--accent-color);
             transition: 200ms ease;
           }
 
           button:hover {
-            background-color: $accent-color;
+            background-color: var(--accent-color);
             transition: 200ms ease;
           }
           button:hover > .chat-send-input {
-            color: $lightest-gray;
+            color: var(--lightest-gray);
             transition: 200ms ease;
           }
         }
@@ -572,18 +575,18 @@ $title-font: 'Fugaz One';
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: $light-gray;
+  background: var(--light-gray);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $dark-accent;
+  background: var(--dark-accent);
   border-radius: 100px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $accent-color;
+  background: var(--accent-color);
 }
 
 ::-webkit-scrollbar-track-piece:end {
