@@ -398,8 +398,13 @@ $title-font: 'Fugaz One';
           transition: 200ms ease;
         }
         .settings-link:hover {
-          font-size: 34px;
-          transition: 200ms ease;
+          // font-size: 34px;
+          // transition: 200ms ease;
+
+          animation-name: rotate;
+          animation-duration: 3500ms;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
         }
       }
 
@@ -501,7 +506,9 @@ $title-font: 'Fugaz One';
           color: $accent-color;
           font-size: 23px;
           transition: 200ms ease;
+          cursor: pointer;
         }
+        
         .attach-file-input:hover {
           font-size: 25px;
           transition: 200ms ease;
@@ -580,4 +587,9 @@ $title-font: 'Fugaz One';
 ::-webkit-scrollbar-track-piece:start {
   background: transparent;
   margin-top: 5px;
+}
+
+@keyframes rotate {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
 }
