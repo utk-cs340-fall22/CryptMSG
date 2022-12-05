@@ -90,7 +90,7 @@
         transition: 200ms ease;
       }
       button:hover {
-        background-color: $lightest-gray;
+        background-color: var(--lightest-gray);
         transition: 200ms ease;
       }
     }
