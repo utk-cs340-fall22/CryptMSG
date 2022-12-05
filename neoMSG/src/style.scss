@@ -5,6 +5,10 @@ $lightest-gray: #4A4A4A;
 $accent-color: #ffcb74;
 $dark-accent: #E5B666;
 $receive-color: #2f2f2f;
+$light-text-color: #f6f6f6;
+$chat-settings-color: #c2c2c2;
+$slider-color: white;
+$settings-hover: #333333;
 $main-font: 'Nunito';
 $title-font: 'Fugaz One';
 
@@ -108,6 +112,126 @@ $title-font: 'Fugaz One';
     height: 80%;
     width: 80%;
     border-radius: 20px;
+
+    #settings-flex {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 30vh;
+      gap: 5vh;
+    }
+
+    p {
+      font-size: 35px;
+      color: $light-text-color;
+    }
+
+    p > span {
+      padding-left: 5vw;
+    }
+
+    #close-settings {
+      align-items: right;
+      margin-bottom: 8vh;
+      text-align: right;
+      padding-right: 3vw;
+      padding-top: 2vw;
+      font-size: 2vw;
+      text-decoration: none;
+      float: right;
+      color: $light-text-color;
+    }
+
+    #close-settings:hover {
+      color: red;
+      cursor: pointer;
+    }
+
+    #darkmode-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #logout-button {
+      background-color: $lighter-gray;
+      color: $accent-color;
+      border: 1px solid $accent-color;
+      padding: 10px;
+      border-radius: 50px;
+      font-size: 25px;
+      text-decoration: none;
+    }
+
+    #logout-button:hover {
+      background-color: $accent-color;
+      color: $lighter-gray;
+    }
+
+    /* Slider from W3 schools */
+    /* The switch - the box around the slider */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: $slider-color;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: $accent-color;
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px $accent-color;
+    }
+    
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+    
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+    
+    .slider.round:before {
+      border-radius: 50%;
+    }
   }
 }
 
@@ -124,9 +248,9 @@ $title-font: 'Fugaz One';
   overflow-x: hidden;
 
   .container {
-    border: 1px solid white;
+    // border: 1px solid white;
     width: 100%;
-    height: 90%;
+    height: 100%;
     // width: 80%;
     // height: 80%;
     display: flex;
@@ -147,6 +271,7 @@ $title-font: 'Fugaz One';
         background-color: $accent-color;
         height: 50px;
         padding: 10px;
+        gap: 15px;
         justify-content: space-between;
 
         .logo {
@@ -349,12 +474,14 @@ $title-font: 'Fugaz One';
 
       .input {
         height: 50px;
-        background-color: white;
         padding: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         background-color: $lighter-gray;
+        border: 1px solid $accent-color;
+        border-radius: 50px;
+        transform: translateY(-15px);
 
         input {
           width: 100%;
@@ -426,7 +553,7 @@ $title-font: 'Fugaz One';
 // Scrollbar
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
@@ -437,9 +564,20 @@ $title-font: 'Fugaz One';
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: $dark-accent;
+  border-radius: 100px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $accent-color;
+}
+
+::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 20px; 
+}
+
+::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 5px;
 }
