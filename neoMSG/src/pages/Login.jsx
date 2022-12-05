@@ -36,7 +36,7 @@ const Login = () => {
         <span className='title'>Login</span>
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email"/>
-          <input type="password" placeholder="password"/>
+          <input type="password" placeholder="password" autoComplete="on"/>
           <button>Login</button>
           {/* {err && <span>Something went wrong</span>} */}
           <span>{err}</span>
