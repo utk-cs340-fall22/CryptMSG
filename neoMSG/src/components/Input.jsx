@@ -81,25 +81,27 @@ const Input = () => {
   };
 
   return (
-    <div className='input'>
-      <input 
-        type="text" 
-        id="chat-input"
-        placeholder='Message...'
-        onKeyDown={handleKeySend}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <div className='send'>
+    <div id="input-flex">
+      <div className='input'>
         <input 
-          type="file" 
-          style={{display:"none"}} 
-          id="file"
-          onChange={(e) => setImg(e.target.files[0])}
+          type="text" 
+          id="chat-input"
+          placeholder='Message...'
+          onKeyDown={handleKeySend}
+          onChange={(e) => setText(e.target.value)}
         />
-        <label htmlFor='file'>
-          <FaIcons.FaPaperclip className="attach-file-input"/>
-        </label>
-        <button onClick={handleSend}><FaIcons.FaPaperPlane className="chat-send-input"/></button>
+        <div className='send'>
+          <input 
+            type="file" 
+            style={{display:"none"}} 
+            id="file"
+            onChange={(e) => setImg(e.target.files[0])}
+          />
+          <label htmlFor='file'>
+            <FaIcons.FaPaperclip className="attach-file-input"/>
+          </label>
+          <button onClick={handleSend}><FaIcons.FaPaperPlane className="chat-send-input"/></button>
+        </div>
       </div>
     </div>
   )

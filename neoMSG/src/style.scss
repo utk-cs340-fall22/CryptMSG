@@ -477,9 +477,16 @@ $title-font: 'Fugaz One';
         }
       }
 
+      #input-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       .input {
         height: 50px;
         padding: 10px;
+        width: 95%;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -508,7 +515,7 @@ $title-font: 'Fugaz One';
           transition: 200ms ease;
           cursor: pointer;
         }
-        
+
         .attach-file-input:hover {
           font-size: 25px;
           transition: 200ms ease;
