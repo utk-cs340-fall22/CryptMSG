@@ -100,24 +100,26 @@ const Register = () => {
   }
 
   return (
-    <div className="formContainer">
-      <div className="formWrapper">
-        <span className="logo">neoMSG</span>
-        <span className='title'>Register</span>
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="display name"/>
-          <input type="email" placeholder="email"/>
-          <input type="password" placeholder="password"/>
-          <input style={{display:"none"}} type="file" id="file"/>
-          <label htmlFor='file'>
-            Add Avatar
-          </label>
-          <button>Sign Up</button>
-          {/* {err && <span>Something went wrong</span>} */}
-          {loading && <span>Uploading image...</span>}
-          {err && <span>{errMsg}</span>}
-        </form>
-        <p>You have an account already? <Link to="/login">Login</Link></p>
+    <div className="background-container">
+      <div className="formContainer">
+        <div className="formWrapper">
+          <span className="logo">CryptMSG</span>
+          <span className='title'>Register</span>
+          <form onSubmit={handleSubmit}>
+            <input type="text" placeholder="display name"/>
+            <input type="email" placeholder="email"/>
+            <input type="password" placeholder="password" autoComplete="on"/>
+            <input style={{display:"none"}} type="file" id="file"/>
+            <label htmlFor='file'>
+              Add Avatar
+            </label>
+            <button>Sign Up</button>
+            {/* {err && <span>Something went wrong</span>} */}
+            {loading && <span>Uploading image...</span>}
+            {err && <span>{errMsg}</span>}
+          </form>
+          <p>You have an account already? <Link to="/login">Login</Link></p>
+        </div>
       </div>
     </div>
   )
