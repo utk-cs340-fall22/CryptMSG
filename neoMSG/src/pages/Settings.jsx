@@ -1,7 +1,9 @@
-import React from 'react'
+import React , { useContext } from 'react'
+import * as AiIcons from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase'
+import { AuthContext } from '../context/AuthContext'
 
 var checked = false;
 
@@ -49,12 +51,17 @@ function lightmode() {
 
 
 const Settings = () => {
+  const {currentUser} = useContext(AuthContext);
+
   return (
     <div className="settings">
       <h1>Settings</h1>
       <div className="settings-container">
-        <Link to="/" id="close-settings">X</Link>
+        <Link to="/" id="close-settings"><AiIcons.AiOutlineCloseCircle/></Link>
         <div id="settings-flex">
+          <span className="user-info">Display Name: <span>{currentUser.displayName}</span></span>
+          <span className="user-info">Email: <span>{currentUser.email}</span></span>
+          <span className="user-info">Avatar: <img src={currentUser.photoURL} alt="" className="profile-avatar"/></span>
           <div id="darkmode-flex">
             <p>Light Mode</p>
             { toggle() }

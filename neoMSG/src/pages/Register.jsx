@@ -50,6 +50,7 @@ const Register = () => {
             //create empty user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
             navigate("/");
+            window.location.reload(true);
           } catch (err) {
             console.log(err);
             setErr(true);
@@ -106,10 +107,10 @@ const Register = () => {
           <span className="logo">CryptMSG</span>
           <span className='title'>Register</span>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="display name"/>
-            <input type="email" placeholder="email"/>
-            <input type="password" placeholder="password" autoComplete="on"/>
-            <input style={{display:"none"}} type="file" id="file"/>
+            <input type="text" placeholder="display name" required/>
+            <input type="email" placeholder="email" required/>
+            <input type="password" placeholder="password" autoComplete="on" required/>
+            <input style={{display:"none"}} type="file" id="file" required/>
             <label htmlFor='file'>
               Add Avatar
             </label>

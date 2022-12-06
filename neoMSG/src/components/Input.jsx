@@ -23,11 +23,11 @@ const Input = () => {
   const handleKeySend = (e) => {
     if (e.code === "Enter") {
       handleSend();
-      document.getElementById("chat-input").value = "";
     }
   };
 
   const handleSend = async () => {
+    document.getElementById("chat-input").value = "";
     if (img) {
       const storageRef = ref(storage, uuid());
 
