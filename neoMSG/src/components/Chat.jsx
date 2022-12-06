@@ -8,10 +8,11 @@ import { ChatContext } from "../context/ChatContext";
 const Chat = () => {
   const [active, setActive] = useState(false);
   const { data } = useContext(ChatContext);
+
   useEffect(() => {
     if (JSON.stringify(data.user) === '{}') setActive(false);
     else setActive(true);
-  })
+  }, [data.user])
   
   return (
     <div className='chat'>
