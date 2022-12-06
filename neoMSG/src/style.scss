@@ -352,6 +352,11 @@
       }
     }
 
+    .chats {
+      height: 88vh;
+      overflow: scroll;
+    }
+
     .userChat {
       padding: 10px;
       display: flex;
@@ -606,6 +611,38 @@
 ::-webkit-scrollbar-track-piece:start {
   background: transparent;
   margin-top: 5px;
+}
+
+// Chats Scrollbar
+/* width */
+.chats::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.chats::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+/* Handle */
+.chats::-webkit-scrollbar-thumb {
+  background: var(--lightest-gray);
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+.chats::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+.chats::-webkit-scrollbar-track-piece:end {
+  background: var(--light-gray);
+  margin-bottom: 0; 
+}
+
+.chats::-webkit-scrollbar-track-piece:start {
+  background: var(--light-gray);
+  margin-top: 0;
 }
 
 @keyframes rotate {
