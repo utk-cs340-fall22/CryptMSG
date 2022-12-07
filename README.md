@@ -5,6 +5,8 @@ Name: Kijan Daniel, Student Id: kdanie32, Github Id: Kijan Daniel
 Name: Jacob Hawkins, Student Id: jhawki41
 Name: Reagan Austin, Student Id: raustin9
 
+![cryptmsg3](https://user-images.githubusercontent.com/22061943/206062493-bba37f71-b9e6-4292-b05f-5c5a4035b4c5.png)
+
 #  Product Description
 This product is a encrypted messaging app with a unique user login. The login not only stores their identity for future use, it also keeps track of all the messages they have sent and recieved. Our messaging app runs on its own firebase server so logging on from any laptop on any network is a breeze. In addition to this, we have customizable settings so that the user will feel right at home with either a light or dark mode. 
  
