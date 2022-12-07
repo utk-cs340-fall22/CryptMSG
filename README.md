@@ -17,6 +17,6 @@
 - To use CryptMSG you have to launch cryptmsg.net and make an account ussing either a premade google account or an email and password.
 
 #  License Information
-- Go to LICENSE.txt in the home directory of the repository
+- Go to [LICENSE.txt](https://github.com/utk-cs340-fall22/CryptMSG/blob/main/LICENSE) in the home directory of the repository
 
 [Figma Design Document](https://www.figma.com/file/IBEUuUtQhDCHAvtjbuNzIP/Crypt-MSG?node-id=0%3A1)
